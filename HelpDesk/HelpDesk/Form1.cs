@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAO;
+using DAO.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,14 @@ namespace HelpDesk
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CadastroSimplesDAO c = CadastroSimplesDAO.GetInstancia(CadastrosType.Urgencia);
+
+            c.ListarTudo();
+
         }
     }
 }

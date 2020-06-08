@@ -1,0 +1,6 @@
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\bin\Debug\DAO.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\bin\Debug\DAO.pdb
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\obj\Debug\DAO.csprojAssemblyReference.cache
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\obj\Debug\DAO.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\obj\Debug\DAO.pdb
