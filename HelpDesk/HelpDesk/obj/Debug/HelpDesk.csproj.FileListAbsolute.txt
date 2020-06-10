@@ -11,3 +11,6 @@ C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpD
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.csproj.CopyComplete
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.exe
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.pdb
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\bin\Debug\Model.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\bin\Debug\Model.pdb
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.CadastroSimples.resources

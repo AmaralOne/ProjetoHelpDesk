@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CadastroSimples.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroSimples.Designer.cs">
+      <DependentUpon>CadastroSimples.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CadastroSimples.resx">
+      <DependentUpon>CadastroSimples.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +92,10 @@
     <ProjectReference Include="..\DAO\DAO.csproj">
       <Project>{720d5427-4044-42d8-8f49-855590dc2e1e}</Project>
       <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{f53b859e-bcc2-46ef-ba64-cf85d96840bc}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

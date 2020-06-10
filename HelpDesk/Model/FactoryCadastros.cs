@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAO.model
+namespace Model
 {
     public class FactoryCadastros
     {

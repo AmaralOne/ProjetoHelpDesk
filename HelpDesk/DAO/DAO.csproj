@@ -42,19 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CadastroSimplesDAO.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Conexao.cs" />
     <Compile Include="EquipeDAO.cs" />
-    <Compile Include="ICadastro.cs" />
     <Compile Include="IDAO.cs" />
     <Compile Include="IDAO_Cadastro.cs" />
-    <Compile Include="model\CadastrosType.cs" />
-    <Compile Include="model\Equipe.cs" />
-    <Compile Include="model\FactoryCadastros.cs" />
-    <Compile Include="model\Servico.cs" />
-    <Compile Include="model\Status.cs" />
-    <Compile Include="model\Urgencia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{f53b859e-bcc2-46ef-ba64-cf85d96840bc}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

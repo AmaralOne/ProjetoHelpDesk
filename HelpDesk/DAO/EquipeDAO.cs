@@ -1,11 +1,11 @@
-﻿using DAO.model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace DAO
 {
@@ -45,19 +45,25 @@ namespace DAO
             }
         }
 
-        public void Inativar(Equipe Model)
+        public bool Remover( Equipe Model)
         {
 
+            bool retornar = false;
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"Update {Tabela} set  Ativo='0' Where Id=@Id";
+                command.CommandText = $"Delete from {Tabela} Where Id=@Id";
 
-                command.Parameters.Add("@Id", SqlDbType.Int).Value = Model.Id;
+                command.Parameters.Add("@Id", SqlDbType.Int).Value = Model.GetId();
 
-                command.ExecuteNonQuery();
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    retornar = true;
+                }
 
             }
+
+            return retornar;
 
 
         }

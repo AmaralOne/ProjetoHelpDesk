@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Control
+namespace Model
 {
-    public class Class1
+    public enum CadastrosType
     {
+        Equipe = 0,
+        Status = 1,
+        Servico = 2,
+        Urgencia = 3
     }
 }

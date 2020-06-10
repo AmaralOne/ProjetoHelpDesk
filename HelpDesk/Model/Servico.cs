@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAO.model
+namespace Model
 {
-    public class Urgencia:ICadastro
+    public class Servico:ICadastro
     {
         public int Id { get; set; }
         public string Nome { get; set; }

@@ -28,25 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Cadastro_Equipe = new System.Windows.Forms.Button();
+            this.btn_Cadastro_Status = new System.Windows.Forms.Button();
+            this.btn_Cadastro_Servico = new System.Windows.Forms.Button();
+            this.btn_Cadastro_Urgencia = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_Cadastro_Equipe
             // 
-            this.button1.Location = new System.Drawing.Point(61, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Cadastro_Equipe.Location = new System.Drawing.Point(61, 54);
+            this.btn_Cadastro_Equipe.Name = "btn_Cadastro_Equipe";
+            this.btn_Cadastro_Equipe.Size = new System.Drawing.Size(113, 41);
+            this.btn_Cadastro_Equipe.TabIndex = 0;
+            this.btn_Cadastro_Equipe.Text = "Cadastro de Equipe";
+            this.btn_Cadastro_Equipe.UseVisualStyleBackColor = true;
+            this.btn_Cadastro_Equipe.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_Cadastro_Status
+            // 
+            this.btn_Cadastro_Status.Location = new System.Drawing.Point(180, 54);
+            this.btn_Cadastro_Status.Name = "btn_Cadastro_Status";
+            this.btn_Cadastro_Status.Size = new System.Drawing.Size(113, 41);
+            this.btn_Cadastro_Status.TabIndex = 1;
+            this.btn_Cadastro_Status.Text = "Cadastro de Status";
+            this.btn_Cadastro_Status.UseVisualStyleBackColor = true;
+            this.btn_Cadastro_Status.Click += new System.EventHandler(this.btn_Cadastro_Status_Click);
+            // 
+            // btn_Cadastro_Servico
+            // 
+            this.btn_Cadastro_Servico.Location = new System.Drawing.Point(418, 54);
+            this.btn_Cadastro_Servico.Name = "btn_Cadastro_Servico";
+            this.btn_Cadastro_Servico.Size = new System.Drawing.Size(113, 41);
+            this.btn_Cadastro_Servico.TabIndex = 2;
+            this.btn_Cadastro_Servico.Text = "Cadastro de Serviço";
+            this.btn_Cadastro_Servico.UseVisualStyleBackColor = true;
+            this.btn_Cadastro_Servico.Click += new System.EventHandler(this.btn_Cadastro_Servico_Click);
+            // 
+            // btn_Cadastro_Urgencia
+            // 
+            this.btn_Cadastro_Urgencia.Location = new System.Drawing.Point(299, 54);
+            this.btn_Cadastro_Urgencia.Name = "btn_Cadastro_Urgencia";
+            this.btn_Cadastro_Urgencia.Size = new System.Drawing.Size(113, 41);
+            this.btn_Cadastro_Urgencia.TabIndex = 3;
+            this.btn_Cadastro_Urgencia.Text = "Cadastro de Urgência";
+            this.btn_Cadastro_Urgencia.UseVisualStyleBackColor = true;
+            this.btn_Cadastro_Urgencia.Click += new System.EventHandler(this.btn_Cadastro_Urgencia_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Cadastro_Urgencia);
+            this.Controls.Add(this.btn_Cadastro_Servico);
+            this.Controls.Add(this.btn_Cadastro_Status);
+            this.Controls.Add(this.btn_Cadastro_Equipe);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -55,7 +91,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Cadastro_Equipe;
+        private System.Windows.Forms.Button btn_Cadastro_Status;
+        private System.Windows.Forms.Button btn_Cadastro_Servico;
+        private System.Windows.Forms.Button btn_Cadastro_Urgencia;
     }
 }
 

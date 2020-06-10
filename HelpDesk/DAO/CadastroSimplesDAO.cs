@@ -1,5 +1,4 @@
-﻿using DAO.model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace DAO
 {
@@ -51,21 +51,24 @@ namespace DAO
             }
         }
 
-        public void Inativar(ICadastro Model)
+        public bool Remover(ICadastro Model)
         {
-
+            bool retornar = false;
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"Update {type} set  Ativo='0' Where Id=@Id";
+                command.CommandText = $"Delete from {type} Where Id=@Id";
 
                 command.Parameters.Add("@Id", SqlDbType.Int).Value = Model.GetId();
 
-                command.ExecuteNonQuery();
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    retornar = true;
+                }
 
             }
 
-
+            return retornar;
         }
 
         public void Dispose()
@@ -78,7 +81,7 @@ namespace DAO
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"Insert into {type} (Nome, Ativo) values (@Nome,'1'); SET @Id = SCOPE_IDENTITY();";
+                command.CommandText = $"Insert into {type} (Nome) values (@Nome); SET @Id = SCOPE_IDENTITY();";
 
                 command.Parameters.Add("@Nome", SqlDbType.Text).Value = Model.GetNome();
 
@@ -101,7 +104,7 @@ namespace DAO
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"Select {Colunas} from {type} Where Nome LIKE ('%'+ @Nome +'%') and Ativo != '0';";
+                command.CommandText = $"Select {Colunas} from {type} Where Nome LIKE ('%'+ @Nome +'%');";
                 command.Parameters.Clear();
                 command.Parameters.Add("@Nome", SqlDbType.VarChar).Value = Keys[0];
 
@@ -134,7 +137,7 @@ namespace DAO
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"Select {Colunas} from {type} Where Ativo != '0';";
+                command.CommandText = $"Select {Colunas} from {type};";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {

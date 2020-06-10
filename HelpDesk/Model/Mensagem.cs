@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAO.model
+namespace Model
 {
-    public enum CadastrosType
+    public class Mensagem:Acoes
     {
-        Equipe = 0,
-        Status = 1,
-        Servico = 2,
-        Urgencia = 3
+        public string Texto { get; set; }
     }
 }

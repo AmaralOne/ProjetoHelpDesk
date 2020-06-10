@@ -16,7 +16,7 @@ namespace DAO
         void Atualizar(T Model);
 
         //método para remover
-        void Inativar (T Model);
+        bool Remover(T Model);
 
         //método para procurar registros especifico
 

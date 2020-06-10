@@ -1,5 +1,5 @@
 ﻿using DAO;
-using DAO.model;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,10 +21,26 @@ namespace HelpDesk
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CadastroSimplesDAO c = CadastroSimplesDAO.GetInstancia(CadastrosType.Urgencia);
 
-            c.ListarTudo();
 
+            CadastroSimples.GetInstancia(Model.CadastrosType.Equipe).Show();
+            
+
+        }
+
+        private void btn_Cadastro_Status_Click(object sender, EventArgs e)
+        {
+            CadastroSimples.GetInstancia(Model.CadastrosType.Status).Show();
+        }
+
+        private void btn_Cadastro_Urgencia_Click(object sender, EventArgs e)
+        {
+            CadastroSimples.GetInstancia(Model.CadastrosType.Urgencia).Show();
+        }
+
+        private void btn_Cadastro_Servico_Click(object sender, EventArgs e)
+        {
+            CadastroSimples.GetInstancia(Model.CadastrosType.Servico).Show();
         }
     }
 }
