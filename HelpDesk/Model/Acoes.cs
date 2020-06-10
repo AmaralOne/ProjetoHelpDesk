@@ -8,7 +8,7 @@ namespace Model
 {
     public abstract class Acoes
     {
-        // flavio boiola
+        // flavio 
         public int Id { get; set; }
         public int CodigoUsuario { get; set; }
         public string NomeUsuario { get; set; }
