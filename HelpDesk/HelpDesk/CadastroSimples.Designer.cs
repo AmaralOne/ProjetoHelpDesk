@@ -190,6 +190,7 @@
             this.Controls.Add(this.btn_Alterar);
             this.Controls.Add(this.btn_Salvar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CadastroSimples";
             this.Text = "CadastroSimples";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CadastroSimples_FormClosing);

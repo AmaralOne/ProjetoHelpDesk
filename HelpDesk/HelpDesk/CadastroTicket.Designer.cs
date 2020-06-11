@@ -309,6 +309,7 @@
             this.Controls.Add(this.comboBoxPessoas);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CadastroTicket";
             this.Text = "Cadastro de Ticket";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CadastroTicket_FormClosing);

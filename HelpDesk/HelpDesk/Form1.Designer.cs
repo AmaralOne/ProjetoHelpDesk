@@ -28,89 +28,107 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_Cadastro_Equipe = new System.Windows.Forms.Button();
-            this.btn_Cadastro_Status = new System.Windows.Forms.Button();
-            this.btn_Cadastro_Servico = new System.Windows.Forms.Button();
-            this.btn_Cadastro_Urgencia = new System.Windows.Forms.Button();
-            this.btn_NovoTicket = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btn_Cadastro_Equipe
+            // toolStrip1
             // 
-            this.btn_Cadastro_Equipe.Location = new System.Drawing.Point(61, 54);
-            this.btn_Cadastro_Equipe.Name = "btn_Cadastro_Equipe";
-            this.btn_Cadastro_Equipe.Size = new System.Drawing.Size(113, 41);
-            this.btn_Cadastro_Equipe.TabIndex = 0;
-            this.btn_Cadastro_Equipe.Text = "Cadastro de Equipe";
-            this.btn_Cadastro_Equipe.UseVisualStyleBackColor = true;
-            this.btn_Cadastro_Equipe.Click += new System.EventHandler(this.button1_Click);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton6,
+            this.toolStripButton1,
+            this.toolStripButton4,
+            this.toolStripButton5,
+            this.toolStripButton2});
+            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(800, 22);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "toolStrip1";
             // 
-            // btn_Cadastro_Status
+            // toolStripButton1
             // 
-            this.btn_Cadastro_Status.Location = new System.Drawing.Point(180, 54);
-            this.btn_Cadastro_Status.Name = "btn_Cadastro_Status";
-            this.btn_Cadastro_Status.Size = new System.Drawing.Size(113, 41);
-            this.btn_Cadastro_Status.TabIndex = 1;
-            this.btn_Cadastro_Status.Text = "Cadastro de Status";
-            this.btn_Cadastro_Status.UseVisualStyleBackColor = true;
-            this.btn_Cadastro_Status.Click += new System.EventHandler(this.btn_Cadastro_Status_Click);
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(47, 19);
+            this.toolStripButton1.Text = "Equipe";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // btn_Cadastro_Servico
+            // toolStripButton2
             // 
-            this.btn_Cadastro_Servico.Location = new System.Drawing.Point(418, 54);
-            this.btn_Cadastro_Servico.Name = "btn_Cadastro_Servico";
-            this.btn_Cadastro_Servico.Size = new System.Drawing.Size(113, 41);
-            this.btn_Cadastro_Servico.TabIndex = 2;
-            this.btn_Cadastro_Servico.Text = "Cadastro de Serviço";
-            this.btn_Cadastro_Servico.UseVisualStyleBackColor = true;
-            this.btn_Cadastro_Servico.Click += new System.EventHandler(this.btn_Cadastro_Servico_Click);
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(49, 19);
+            this.toolStripButton2.Text = "Serviço";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // btn_Cadastro_Urgencia
+            // toolStripButton4
             // 
-            this.btn_Cadastro_Urgencia.Location = new System.Drawing.Point(299, 54);
-            this.btn_Cadastro_Urgencia.Name = "btn_Cadastro_Urgencia";
-            this.btn_Cadastro_Urgencia.Size = new System.Drawing.Size(113, 41);
-            this.btn_Cadastro_Urgencia.TabIndex = 3;
-            this.btn_Cadastro_Urgencia.Text = "Cadastro de Urgência";
-            this.btn_Cadastro_Urgencia.UseVisualStyleBackColor = true;
-            this.btn_Cadastro_Urgencia.Click += new System.EventHandler(this.btn_Cadastro_Urgencia_Click);
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(43, 19);
+            this.toolStripButton4.Text = "Status";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
-            // btn_NovoTicket
+            // toolStripButton5
             // 
-            this.btn_NovoTicket.Location = new System.Drawing.Point(61, 137);
-            this.btn_NovoTicket.Name = "btn_NovoTicket";
-            this.btn_NovoTicket.Size = new System.Drawing.Size(113, 41);
-            this.btn_NovoTicket.TabIndex = 4;
-            this.btn_NovoTicket.Text = "Novo Ticket";
-            this.btn_NovoTicket.UseVisualStyleBackColor = true;
-            this.btn_NovoTicket.Click += new System.EventHandler(this.btn_NovoTicket_Click);
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(58, 19);
+            this.toolStripButton5.Text = "Urgência";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(40, 19);
+            this.toolStripButton6.Text = "Novo";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_NovoTicket);
-            this.Controls.Add(this.btn_Cadastro_Urgencia);
-            this.Controls.Add(this.btn_Cadastro_Servico);
-            this.Controls.Add(this.btn_Cadastro_Status);
-            this.Controls.Add(this.btn_Cadastro_Equipe);
+            this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Help Desk";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btn_Cadastro_Equipe;
-        private System.Windows.Forms.Button btn_Cadastro_Status;
-        private System.Windows.Forms.Button btn_Cadastro_Servico;
-        private System.Windows.Forms.Button btn_Cadastro_Urgencia;
-        private System.Windows.Forms.Button btn_NovoTicket;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
     }
 }
 

@@ -39,29 +39,29 @@ namespace HelpDesk
         {
 
 
-            CadastroSimples.GetInstancia(Model.CadastrosType.Equipe).Show();
+            
             
 
         }
 
         private void btn_Cadastro_Status_Click(object sender, EventArgs e)
         {
-            CadastroSimples.GetInstancia(Model.CadastrosType.Status).Show();
+            
         }
 
         private void btn_Cadastro_Urgencia_Click(object sender, EventArgs e)
         {
-            CadastroSimples.GetInstancia(Model.CadastrosType.Urgencia).Show();
+            
         }
 
         private void btn_Cadastro_Servico_Click(object sender, EventArgs e)
         {
-            CadastroSimples.GetInstancia(Model.CadastrosType.Servico).Show();
+            
         }
 
         private void btn_NovoTicket_Click(object sender, EventArgs e)
         {
-            CadastroTicket.GetInstancia().Show();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -77,6 +77,31 @@ namespace HelpDesk
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             login.Close();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            CadastroSimples.GetInstancia(Model.CadastrosType.Equipe).Show();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            CadastroSimples.GetInstancia(Model.CadastrosType.Status).Show();
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            CadastroSimples.GetInstancia(Model.CadastrosType.Urgencia).Show();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            CadastroSimples.GetInstancia(Model.CadastrosType.Servico).Show();
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            CadastroTicket.GetInstancia().Show();
         }
     }
 }
