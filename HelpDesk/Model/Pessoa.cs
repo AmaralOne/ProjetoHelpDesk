@@ -13,7 +13,18 @@ namespace Model
         public string CPF { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
-        public int Endereco { get; set; }
+        public string Endereco { get; set; }
+
+        public Pessoa() { }
+        public Pessoa(int Id, string Nome, string CPF, string Telefone, string Email, String Endereco)
+        {
+            this.Id = Id;
+            this.Nome = Nome;
+            this.CPF = CPF;
+            this.Telefone = Telefone;
+            this.Email = Email;
+            this.Endereco = Endereco;
+        }
 
         public bool ValidaEmail(String email)
         {

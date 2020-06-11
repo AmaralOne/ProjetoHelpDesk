@@ -14,5 +14,9 @@ namespace Model
         public string NomeUsuario { get; set; }
         public DateTime Data { get; set; }
 
+        public abstract string Exibir();
+
+        public abstract AcoesEnum Tipo();
+
     }
 }

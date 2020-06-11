@@ -6,8 +6,19 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Usuario:Pessoa
+    public class Usuario : Pessoa
     {
+        public Usuario() : base()
+        {
+
+        }
+        public Usuario(int codigoEquipe, string nomeEquipe, string senha): base()
+        {
+            CodigoEquipe = codigoEquipe;
+            NomeEquipe = nomeEquipe;
+            Senha = senha;
+        }
+
         public int CodigoEquipe { get; set; }
         public string NomeEquipe { get; set; }
         private string Senha { get; set; }

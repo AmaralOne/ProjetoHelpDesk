@@ -97,7 +97,7 @@ namespace DAO
             return Model;
         }
 
-        public IEnumerator<ICadastro> ListarPorParametros(params object[] Keys)
+        public IEnumerable<ICadastro> ListarPorParametros(params object[] Keys)
         {
             List<ICadastro> colecoes = new List<ICadastro>();
 
@@ -127,10 +127,10 @@ namespace DAO
 
             }
 
-            return colecoes.GetEnumerator();
+            return colecoes.AsEnumerable();
         }
 
-        public IEnumerator<ICadastro> ListarTudo()
+        public IEnumerable<ICadastro> ListarTudo()
         {
             List<ICadastro> colecoes = new List<ICadastro>();
 
@@ -157,7 +157,7 @@ namespace DAO
 
             }
 
-            return colecoes.GetEnumerator();
+            return colecoes.AsEnumerable();
         }
 
         public ICadastro LocarizarPorCodigo(params object[] Keys)

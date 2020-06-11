@@ -48,7 +48,7 @@ namespace HelpDesk
             {
                 cadastoSimplesDao = CadastroSimplesDAO.GetInstancia(type);
 
-                IEnumerator<ICadastro> cadastros = cadastoSimplesDao.ListarTudo();
+                IEnumerable<ICadastro> cadastros = cadastoSimplesDao.ListarTudo();
 
                 //dataGridCadastro.DataSource = cadastros;
                 
@@ -64,7 +64,7 @@ namespace HelpDesk
 
         }
 
-        private void InitializeDataGridView(IEnumerator<ICadastro> cadastros)
+        private void InitializeDataGridView(IEnumerable<ICadastro> cadastros)
         {
             dataGridCadastro.Rows.Clear();
             dataGridCadastro.Refresh();
@@ -87,12 +87,10 @@ namespace HelpDesk
 
             // Populate the rows.
 
-
-            while (cadastros.MoveNext())
+            foreach(ICadastro c in cadastros)
             {
-                ICadastro cadastro = cadastros.Current;
-                dataGridCadastro.Rows.Add(new string[] { cadastro.GetId().ToString(),
-                    cadastro.GetNome()});
+                dataGridCadastro.Rows.Add(new string[] { c.GetId().ToString(),
+                    c.GetNome()});
             }
 
         }
@@ -250,7 +248,7 @@ namespace HelpDesk
             try
             {
                 string pesquisa = txt_pesquisa.Text;
-                IEnumerator<ICadastro> cadastros = cadastoSimplesDao.ListarPorParametros(pesquisa);
+                IEnumerable<ICadastro> cadastros = cadastoSimplesDao.ListarPorParametros(pesquisa);
 
                 
                 InitializeDataGridView(cadastros);

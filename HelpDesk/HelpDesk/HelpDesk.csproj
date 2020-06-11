@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcoesTickets.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AcoesTickets.Designer.cs">
+      <DependentUpon>AcoesTickets.cs</DependentUpon>
+    </Compile>
     <Compile Include="CadastroSimples.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CadastroSimples.Designer.cs">
       <DependentUpon>CadastroSimples.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroTicket.Designer.cs">
+      <DependentUpon>CadastroTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -60,8 +72,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AcoesTickets.resx">
+      <DependentUpon>AcoesTickets.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CadastroSimples.resx">
       <DependentUpon>CadastroSimples.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroTicket.resx">
+      <DependentUpon>CadastroTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acoes.cs" />
+    <Compile Include="AcoesEnum.cs" />
     <Compile Include="Arquivo.cs" />
     <Compile Include="CadastrosType.cs" />
     <Compile Include="Equipe.cs" />

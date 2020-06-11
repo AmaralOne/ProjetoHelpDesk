@@ -42,5 +42,10 @@ namespace HelpDesk
         {
             CadastroSimples.GetInstancia(Model.CadastrosType.Servico).Show();
         }
+
+        private void btn_NovoTicket_Click(object sender, EventArgs e)
+        {
+            CadastroTicket.GetInstancia().Show();
+        }
     }
 }

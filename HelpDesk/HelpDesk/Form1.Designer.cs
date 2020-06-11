@@ -32,6 +32,7 @@
             this.btn_Cadastro_Status = new System.Windows.Forms.Button();
             this.btn_Cadastro_Servico = new System.Windows.Forms.Button();
             this.btn_Cadastro_Urgencia = new System.Windows.Forms.Button();
+            this.btn_NovoTicket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Cadastro_Equipe
@@ -74,11 +75,22 @@
             this.btn_Cadastro_Urgencia.UseVisualStyleBackColor = true;
             this.btn_Cadastro_Urgencia.Click += new System.EventHandler(this.btn_Cadastro_Urgencia_Click);
             // 
+            // btn_NovoTicket
+            // 
+            this.btn_NovoTicket.Location = new System.Drawing.Point(61, 137);
+            this.btn_NovoTicket.Name = "btn_NovoTicket";
+            this.btn_NovoTicket.Size = new System.Drawing.Size(113, 41);
+            this.btn_NovoTicket.TabIndex = 4;
+            this.btn_NovoTicket.Text = "Novo Ticket";
+            this.btn_NovoTicket.UseVisualStyleBackColor = true;
+            this.btn_NovoTicket.Click += new System.EventHandler(this.btn_NovoTicket_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_NovoTicket);
             this.Controls.Add(this.btn_Cadastro_Urgencia);
             this.Controls.Add(this.btn_Cadastro_Servico);
             this.Controls.Add(this.btn_Cadastro_Status);
@@ -95,6 +107,7 @@
         private System.Windows.Forms.Button btn_Cadastro_Status;
         private System.Windows.Forms.Button btn_Cadastro_Servico;
         private System.Windows.Forms.Button btn_Cadastro_Urgencia;
+        private System.Windows.Forms.Button btn_NovoTicket;
     }
 }
 
