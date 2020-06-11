@@ -48,6 +48,7 @@
             this.btn_Salvar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.dateTimePrevisao = new System.Windows.Forms.DateTimePicker();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -238,6 +239,7 @@
             this.btn_Anexar.TabIndex = 16;
             this.btn_Anexar.Text = "Anexar";
             this.btn_Anexar.UseVisualStyleBackColor = true;
+            this.btn_Anexar.Click += new System.EventHandler(this.btn_Anexar_Click);
             // 
             // btn_Salvar
             // 
@@ -275,6 +277,10 @@
             this.dateTimePrevisao.Name = "dateTimePrevisao";
             this.dateTimePrevisao.Size = new System.Drawing.Size(178, 27);
             this.dateTimePrevisao.TabIndex = 19;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // CadastroTicket
             // 
@@ -334,5 +340,6 @@
         private System.Windows.Forms.Button btn_Salvar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dateTimePrevisao;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

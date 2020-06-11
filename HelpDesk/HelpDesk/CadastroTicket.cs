@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -171,6 +172,44 @@ namespace HelpDesk
 
             flowLayoutPanel1.Controls.Add(acoes);
             txt_Mensagem.Text = "";
+        }
+
+        private void btn_Anexar_Click(object sender, EventArgs e)
+        {
+            //define as propriedades do controle 
+            //OpenFileDialog
+
+            openFileDialog1.Multiselect = false;
+            openFileDialog1.Title = "Selecionar Arquivo";
+            openFileDialog1.InitialDirectory = @"C:\";
+            //filtra para exibir somente arquivos de imagens
+            openFileDialog1.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" + "All files (*.*)|*.*";
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.ReadOnlyChecked = true;
+            openFileDialog1.ShowReadOnly = true;
+
+            DialogResult dr = this.openFileDialog1.ShowDialog();
+
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+
+                string path = openFileDialog1.FileName;
+                string Name = openFileDialog1.SafeFileName;
+                string[] aux = Name.Split('.');
+                string nome = aux[0];
+                string formato = aux[1];
+                string caminho = Path.GetDirectoryName(path);
+
+                Usuario user = Login.GetUsuario();
+                Arquivo arquivo  = new Arquivo((itens_acoes.Count) + 1, user.Id, user.Nome, DateTime.Now,caminho,nome,formato);
+
+                itens_acoes.Add(arquivo);
+                AcoesTickets acoes = new AcoesTickets(arquivo);
+                flowLayoutPanel1.Controls.Add(acoes);
+            }
         }
     }
 }

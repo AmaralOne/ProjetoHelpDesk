@@ -43,6 +43,7 @@
             this.btn_Arquivo.TabIndex = 14;
             this.btn_Arquivo.Text = "Arquivo";
             this.btn_Arquivo.UseVisualStyleBackColor = true;
+            this.btn_Arquivo.Click += new System.EventHandler(this.btn_Arquivo_Click);
             // 
             // lab_Usuario
             // 

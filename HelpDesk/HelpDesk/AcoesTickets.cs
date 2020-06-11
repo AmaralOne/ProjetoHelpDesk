@@ -39,5 +39,12 @@ namespace HelpDesk
                 btn_Arquivo.Visible = true;
             }
         }
+
+        private void btn_Arquivo_Click(object sender, EventArgs e)
+        {
+            Arquivo aux = (Arquivo)acoes;
+            string pathFile = aux.Caminho + "\\" + aux.Nome+"."+aux.Formato;
+            System.Diagnostics.Process.Start(pathFile);
+        }
     }
 }
