@@ -16,3 +16,4 @@ C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpD
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.CadastroSimples.resources
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.AcoesTickets.resources
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.CadastroTicket.resources
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.Login.resources

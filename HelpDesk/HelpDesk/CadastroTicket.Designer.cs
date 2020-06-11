@@ -39,7 +39,7 @@
             this.comboBoxServicos = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxUrgencia = new System.Windows.Forms.ComboBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txt_Mensagem = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_Assunto = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -171,17 +171,17 @@
             this.comboBoxUrgencia.Size = new System.Drawing.Size(178, 28);
             this.comboBoxUrgencia.TabIndex = 9;
             // 
-            // richTextBox1
+            // txt_Mensagem
             // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.richTextBox1.Location = new System.Drawing.Point(217, 91);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(526, 86);
-            this.richTextBox1.TabIndex = 11;
-            this.richTextBox1.Text = "";
+            this.txt_Mensagem.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.txt_Mensagem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_Mensagem.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Mensagem.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.txt_Mensagem.Location = new System.Drawing.Point(217, 91);
+            this.txt_Mensagem.Name = "txt_Mensagem";
+            this.txt_Mensagem.Size = new System.Drawing.Size(526, 86);
+            this.txt_Mensagem.TabIndex = 11;
+            this.txt_Mensagem.Text = "";
             // 
             // label6
             // 
@@ -226,6 +226,7 @@
             this.btn_Add.TabIndex = 15;
             this.btn_Add.Text = "Adicionar";
             this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // btn_Anexar
             // 
@@ -289,7 +290,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txt_Assunto);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.txt_Mensagem);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxUrgencia);
             this.Controls.Add(this.label4);
@@ -324,7 +325,7 @@
         private System.Windows.Forms.ComboBox comboBoxServicos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxUrgencia;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txt_Mensagem;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_Assunto;
         private System.Windows.Forms.Label label7;

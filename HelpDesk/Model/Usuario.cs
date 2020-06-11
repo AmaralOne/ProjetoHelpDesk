@@ -12,11 +12,20 @@ namespace Model
         {
 
         }
+
+        public Usuario(int idUsuario, string NomeUsuario,int codigoEquipe, string nomeEquipe, string senha) : base()
+        {
+            this.Id = idUsuario;
+            this.Nome = NomeUsuario;
+            this.CodigoEquipe = codigoEquipe;
+            this.NomeEquipe = nomeEquipe;
+            this.Senha = Util.CalculateSHA1(senha);
+        }
         public Usuario(int codigoEquipe, string nomeEquipe, string senha): base()
         {
             CodigoEquipe = codigoEquipe;
             NomeEquipe = nomeEquipe;
-            Senha = senha;
+            Senha = Util.CalculateSHA1(senha);
         }
 
         public int CodigoEquipe { get; set; }

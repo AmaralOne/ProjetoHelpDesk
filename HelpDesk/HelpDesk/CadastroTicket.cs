@@ -18,6 +18,8 @@ namespace HelpDesk
         private Boolean novo = true;
         private Boolean erro = false;
         private CadastroSimplesDAO cadastoSimplesDao = null;
+        private List<Acoes> itens_acoes = new List<Acoes>();
+
 
 
         private CadastroTicket()
@@ -40,29 +42,7 @@ namespace HelpDesk
 
         private void CadastroTicket_Load(object sender, EventArgs e)
         {
-            dateTimePrevisao.CalendarForeColor = Color.Aqua;
-            Mensagem mensagem = new Mensagem(1,1,"Flávio Filho",DateTime.Now,"O cliente precisa de suporte");
-            Mensagem mensagem1 = new Mensagem(2, 1, "Flávio Filho", DateTime.Now, "O cliente agendou uma visita");
-            Arquivo arquivo = new Arquivo(3, 1, "Flávio Filho", DateTime.Now,"C:","fotoCliente","jpg");
 
-            AcoesTickets acoes = new AcoesTickets(mensagem);
-            AcoesTickets acoes1 = new AcoesTickets(mensagem1);
-            AcoesTickets acoes3 = new AcoesTickets(arquivo);
-            AcoesTickets acoes4 = new AcoesTickets(mensagem1);
-            AcoesTickets acoes5 = new AcoesTickets(mensagem1);
-            AcoesTickets acoes6 = new AcoesTickets(mensagem1);
-            AcoesTickets acoes7 = new AcoesTickets(mensagem1);
-            AcoesTickets acoes8 = new AcoesTickets(mensagem1);
-
-
-            flowLayoutPanel1.Controls.Add(acoes);
-            flowLayoutPanel1.Controls.Add(acoes1);
-            flowLayoutPanel1.Controls.Add(acoes3);
-            flowLayoutPanel1.Controls.Add(acoes4);
-            flowLayoutPanel1.Controls.Add(acoes5);
-            flowLayoutPanel1.Controls.Add(acoes6);
-            flowLayoutPanel1.Controls.Add(acoes7);
-            flowLayoutPanel1.Controls.Add(acoes8);
             PreencherListadePessoas();
             PreencherListadeUsuarios();
             PreencherCombobox(CadastrosType.Status);
@@ -177,6 +157,20 @@ namespace HelpDesk
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            Usuario user = Login.GetUsuario();
+            Mensagem mensagem = new Mensagem((itens_acoes.Count)+1, user.Id, user.Nome, DateTime.Now, txt_Mensagem.Text);
+
+
+            itens_acoes.Add(mensagem);
+            AcoesTickets acoes = new AcoesTickets(mensagem);
+
+
+            flowLayoutPanel1.Controls.Add(acoes);
+            txt_Mensagem.Text = "";
         }
     }
 }
