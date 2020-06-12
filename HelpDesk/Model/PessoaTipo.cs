@@ -10,6 +10,6 @@ namespace Model
     {
         Pessoa = 0,
         Usuario = 1
+
     }
 }
-// Eduardo estou fazendo teste
