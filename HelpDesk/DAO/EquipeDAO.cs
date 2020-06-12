@@ -16,7 +16,6 @@ namespace DAO
         private string Tabela = "Equipe";
         private string Colunas = "Id, Nome ";
 
-        // FLAVIO boiola
         private EquipeDAO() { }
 
         public static EquipeDAO GetInstancia()
