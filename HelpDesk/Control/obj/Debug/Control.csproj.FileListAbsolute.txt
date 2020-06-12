@@ -1,0 +1,11 @@
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\bin\Debug\Control.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\bin\Debug\Control.pdb
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\bin\Debug\DAO.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\bin\Debug\Model.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\bin\Debug\DAO.pdb
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\bin\Debug\Model.pdb
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\obj\Debug\Control.csprojAssemblyReference.cache
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\obj\Debug\Control.csproj.CoreCompileInputs.cache
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\obj\Debug\Control.csproj.CopyComplete
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\obj\Debug\Control.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Control\obj\Debug\Control.pdb
