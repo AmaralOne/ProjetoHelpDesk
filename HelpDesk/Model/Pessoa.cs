@@ -26,6 +26,8 @@ namespace Model
             this.Endereco = Endereco;
         }
 
+        public virtual PessoaTipo Tipo() { return PessoaTipo.Pessoa; }
+
         public bool ValidaEmail(String email)
         {
             string strModelo = "^([0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
