@@ -1,29 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
 
-namespace DAO
+public class Class1
 {
-    public class EquipeDAO : IDAO<Equipe>, IDisposable
+	public Class1()
+	{
+	}
+}
+
+
+public class PessoaDAO : IDAO<Equipe>, IDisposable
     {
-        private static EquipeDAO instancia = null;
+        private static PessoaDAO instancia = null;
 
         private string Tabela = "Equipe";
         private string Colunas = "Id, Nome ";
 
         // FLAVIO boiola
-        private EquipeDAO() { }
+        private PessoaDAO() { }
 
-        public static EquipeDAO GetInstancia()
+        public static PessoaDAO GetInstancia()
         {
             if (instancia == null)
             {
-                instancia = new EquipeDAO();
+                instancia = new PessoaDAO();
             }
 
             return instancia;
@@ -184,4 +183,3 @@ namespace DAO
             return model;
         }
     }
-}
