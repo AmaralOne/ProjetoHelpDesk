@@ -1,11 +1,12 @@
-﻿using System;
-
-public class Class1
-{
-	public Class1()
-	{
-	}
-}
+﻿
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model;
+using System;
 
 
 public class PessoaDAO : IDAO<Equipe>, IDisposable
@@ -72,7 +73,7 @@ public class PessoaDAO : IDAO<Equipe>, IDisposable
             GC.SuppressFinalize(this);
         }
 
-        public Equipe Inserir(Equipe Model)
+        public Equipe Inserir(Pessoa Model)
         {
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
