@@ -52,6 +52,12 @@
     <Compile Include="AcoesTickets.Designer.cs">
       <DependentUpon>AcoesTickets.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadastroPessoas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroPessoas.Designer.cs">
+      <DependentUpon>CadastroPessoas.cs</DependentUpon>
+    </Compile>
     <Compile Include="CadastroSimples.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AcoesTickets.resx">
       <DependentUpon>AcoesTickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroPessoas.resx">
+      <DependentUpon>CadastroPessoas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroSimples.resx">
       <DependentUpon>CadastroSimples.cs</DependentUpon>
