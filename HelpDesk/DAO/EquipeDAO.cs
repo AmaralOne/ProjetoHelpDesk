@@ -97,6 +97,7 @@ namespace DAO
         {
             List<Equipe> colecoes = new List<Equipe>();
 
+            
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;

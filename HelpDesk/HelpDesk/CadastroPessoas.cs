@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DAO;
 
 namespace HelpDesk
 {
@@ -51,7 +52,7 @@ namespace HelpDesk
 
         private void CadastroPessoas_Load(object sender, EventArgs e)
         {
-
+            PreencherCombobox(CadastrosType.Equipe);
         }
 
         private void btn_Novo_Click(object sender, EventArgs e)
@@ -77,7 +78,109 @@ namespace HelpDesk
 
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
+            
 
+            if (!txt_Nome.Text.Equals(""))
+            {
+                Pessoa model = null;
+                bool erro = false;
+
+                if (checkBoxUsuario.Checked == true)
+                {
+                    string equipe = comboBoxEquipe.SelectedValue.ToString();
+                    string senha = txt_Senha.Text;
+
+                    ICadastro equipe1 = CadastroSimplesDAO.GetInstancia(CadastrosType.Equipe).LocarizarPorNome(equipe);
+                    if (equipe1 != null && !senha.Equals(""))
+                    {
+                        model = new Usuario(equipe1.GetId(), equipe1.GetNome(), senha);
+                    }
+                    else
+                    {
+                        erro = true;
+                    }
+                    
+                }
+                else
+                {
+                    model = new Pessoa();
+                }
+
+                model.Nome = txt_Nome.Text;
+                model.CPF = txt_CPF.Text;
+                model.Email = txt_Email.Text;
+                model.Endereco = txt_Endereco.Text;
+                model.Telefone = txt_telefone.Text;
+ 
+               
+                if(erro && Pessoa.ValidaEmail(model.Email) && Pessoa.ValidaTelefone(model.Telefone))
+                {
+                          
+                     if (novo)
+                     {
+                         try
+                         {
+                                //cadastoSimplesDao.Inserir(model);
+                         }
+                         catch (Exception ex)
+                         {
+                                MessageBox.Show($"Erro ao incluir Pessoa\n Mensagem de erro: " + ex, $"Cadastro de Pessoa");
+                         }
+                     }
+                     else
+                     {
+
+
+                         try
+                         {
+                                //cadastoSimplesDao.Atualizar(model);
+                         }
+                         catch (Exception ex)
+                         {
+                                MessageBox.Show($"Erro ao alterar Pessoa\n Mensagem de erro: " + ex, $"Cadastro de Pessoa");
+                         }
+
+                     }
+               
+                }
+                else
+                {
+                     MessageBox.Show($"Erro ao Salvar Pessoa\n Mensagem de erro: Algum dado do cadastro está invalido", $"Cadastro de Pessoa");
+
+                }
+
+            CarregarGrind();
+
+            bloquear();
+            }
+            else
+            {
+                MessageBox.Show($"Erro!!!\nCampo Nome Inválido!!!", $"Cadastro de Pessoa");
+            }
+        }
+
+        private void PreencherCombobox(CadastrosType type)
+        {
+            try
+            {
+
+                CadastroSimplesDAO cadastoSimplesDao = CadastroSimplesDAO.GetInstancia(type);
+
+                IEnumerable<ICadastro> cadastros = cadastoSimplesDao.ListarTudo();
+
+                foreach (ICadastro c in cadastros)
+                {
+
+                    comboBoxEquipe.Items.Add(c.GetNome());
+                }
+
+                comboBoxEquipe.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao Buscar  todas as Equipes\n Mensagem de Erro: " + ex, "Cadastro de Pessoa");
+
+            }
         }
 
         private void btn_Alterar_Click(object sender, EventArgs e)
@@ -180,11 +283,52 @@ namespace HelpDesk
             txt_Senha.Text = "";
 
             comboBoxEquipe.Enabled = false;
-            comboBoxEquipe.SelectedIndex = 0;
+            //comboBoxEquipe.SelectedIndex = 0;
 
-            checkBoxUsuario.Enabled = true;
+            checkBoxUsuario.Enabled = false;
             checkBoxUsuario.Checked = false;
 
+        }
+
+        private void CadastroPessoas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            instancia = null;
+        }
+
+        private void txt_pesquisa_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                string pesquisa = txt_pesquisa.Text;
+                //IEnumerable<Pessoa> cadastros = cadastoSimplesDao.ListarPorParametros(pesquisa);
+
+
+                //InitializeDataGridView(cadastros);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao Pesquisar Pessoa\n Mensagem de Erro: " + ex, $"Cadastro de Pessoa");
+            }
+        }
+
+        private void checkBoxUsuario_TextChanged(object sender, EventArgs e)
+        {
+           
+                
+        }
+
+        private void checkBoxUsuario_Click(object sender, EventArgs e)
+        {
+            if (checkBoxUsuario.Checked == true)
+            {
+                txt_Senha.Enabled = true;
+                comboBoxEquipe.Enabled = true;
+            }
+            else
+            {
+                txt_Senha.Enabled = false;
+                comboBoxEquipe.Enabled = false;
+            }
         }
     }
 }

@@ -166,7 +166,7 @@ namespace DAO
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"Select {Colunas} from {type} Where Id=@Id and Ativo != '0';";
+                command.CommandText = $"Select {Colunas} from {type} Where Id=@Id;";
 
                 command.Parameters.Add("@Id", SqlDbType.Int).Value = Keys[0];
 
@@ -178,6 +178,33 @@ namespace DAO
                         reader.Read();
 
                         model.SetId( reader.GetInt32(0));
+                        model.SetNome(reader.GetString(1));
+                    }
+                }
+
+            }
+
+            return model;
+        }
+
+        public ICadastro LocarizarPorNome(params object[] Keys)
+        {
+            ICadastro model = null;
+            using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"Select {Colunas} from {type} Where Nome=@Nome;";
+
+                command.Parameters.Add("@Nome", SqlDbType.VarChar).Value = Keys[0];
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        model = FactoryCadastros.GetCadastro(type);
+                        reader.Read();
+
+                        model.SetId(reader.GetInt32(0));
                         model.SetNome(reader.GetString(1));
                     }
                 }

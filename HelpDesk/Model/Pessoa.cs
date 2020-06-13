@@ -28,7 +28,7 @@ namespace Model
 
         public virtual PessoaTipo Tipo() { return PessoaTipo.Pessoa; }
 
-        public bool ValidaEmail(String email)
+        public static bool ValidaEmail(String email)
         {
             string strModelo = "^([0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
             if (System.Text.RegularExpressions.Regex.IsMatch(email, strModelo))
@@ -41,7 +41,7 @@ namespace Model
             }
         }
 
-        public bool ValidaTelefone(String telefone)
+        public static bool ValidaTelefone(String telefone)
         {
             string strModelo = "^\\([1 - 9]{ 2}\\) (?:[2 - 8] | 9[1 - 9])[0 - 9]{ 3}\\-[0 - 9]{ 4}$";
 

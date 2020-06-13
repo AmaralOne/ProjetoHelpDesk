@@ -106,7 +106,17 @@ namespace HelpDesk
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void toolStripButton6_Click_1(object sender, EventArgs e)
+        {
             CadastroTicket.GetInstancia().Show();
+        }
+
+        private void btn_Alterar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

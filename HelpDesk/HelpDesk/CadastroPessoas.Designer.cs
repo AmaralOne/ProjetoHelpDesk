@@ -142,6 +142,8 @@
             this.checkBoxUsuario.TabIndex = 18;
             this.checkBoxUsuario.Text = "Usuário";
             this.checkBoxUsuario.UseVisualStyleBackColor = true;
+            this.checkBoxUsuario.TextChanged += new System.EventHandler(this.checkBoxUsuario_TextChanged);
+            this.checkBoxUsuario.Click += new System.EventHandler(this.checkBoxUsuario_Click);
             // 
             // label7
             // 
@@ -253,6 +255,7 @@
             this.txt_pesquisa.Name = "txt_pesquisa";
             this.txt_pesquisa.Size = new System.Drawing.Size(299, 20);
             this.txt_pesquisa.TabIndex = 19;
+            this.txt_pesquisa.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_pesquisa_KeyUp);
             // 
             // label3
             // 
@@ -343,6 +346,7 @@
             this.MaximizeBox = false;
             this.Name = "CadastroPessoas";
             this.Text = "Cadastro de Pessoas";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CadastroPessoas_FormClosed);
             this.Load += new System.EventHandler(this.CadastroPessoas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCadastro)).EndInit();
             this.panel1.ResumeLayout(false);

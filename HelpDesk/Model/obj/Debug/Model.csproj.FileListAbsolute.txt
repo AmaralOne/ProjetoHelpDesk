@@ -1,2 +1,6 @@
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Model\bin\Debug\Model.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Model\bin\Debug\Model.pdb
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Model\obj\Debug\Model.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\Model\obj\Debug\Model.pdb
