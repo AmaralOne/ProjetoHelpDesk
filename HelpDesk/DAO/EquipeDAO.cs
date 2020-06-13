@@ -77,7 +77,7 @@ namespace DAO
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"Insert into {Tabela} (Nome, Ativo) values (@Nome,'1'); SET @Id = SCOPE_IDENTITY();";
+                command.CommandText = $"Insert into {Tabela} (Nome) values (@Nome); SET @Id = SCOPE_IDENTITY();";
 
                 command.Parameters.Add("@Nome", SqlDbType.Text).Value = Model.Nome;
 
@@ -101,7 +101,7 @@ namespace DAO
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"Select {Colunas} from {Tabela} Where Nome LIKE ('%'+ @Nome +'%') and Ativo != '0';";
+                command.CommandText = $"Select {Colunas} from {Tabela} Where Nome LIKE ('%'+ @Nome +'%');";
                 command.Parameters.Clear();
                 command.Parameters.Add("@Nome", SqlDbType.VarChar).Value = Keys[0];
 

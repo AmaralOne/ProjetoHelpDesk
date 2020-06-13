@@ -13,7 +13,7 @@ namespace DAO
     {
         private static PessoaDAO instancia = null;
 
-        private string Tabela = "PESSOATICKET";
+        private string Tabela = "Pess";
         private string Colunas = "Id, Nome ";
 
         private static PessoaTipo type;
@@ -115,7 +115,7 @@ namespace DAO
 
                     foreach (DataRow row in tabela.Rows)
                     {
-                        IPessoa model = FactoryPessoas.GetPessoas(type);
+                        IPessoa model = new Pessoa();
 
                         model.SetId(int.Parse(row["Id"].ToString()));
                         model.SetNome(row["Nome"].ToString());
@@ -145,7 +145,7 @@ namespace DAO
 
                     foreach (DataRow row in tabela.Rows)
                     {
-                        ICadastro model = FactoryCadastros.GetCadastro(type);
+                        ICadastro model = FactoryCadastros.GetCadastro(CadastrosType.Equipe);
 
                         model.SetId(int.Parse(row["Id"].ToString()));
                         model.SetNome(row["Nome"].ToString());
@@ -173,7 +173,7 @@ namespace DAO
                 {
                     if (reader.HasRows)
                     {
-                        model = FactoryCadastros.GetCadastro(type);
+                        model = FactoryCadastros.GetCadastro(CadastrosType.Equipe);
                         reader.Read();
 
                         model.SetId( reader.GetInt32(0));
@@ -200,7 +200,7 @@ namespace DAO
                 {
                     if (reader.HasRows)
                     {
-                        model = FactoryCadastros.GetCadastro(type);
+                        model = FactoryCadastros.GetCadastro(CadastrosType.Equipe);
                         reader.Read();
 
                         model.SetId(reader.GetInt32(0));

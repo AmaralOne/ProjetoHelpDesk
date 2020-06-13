@@ -34,12 +34,77 @@ namespace HelpDesk
             return instancia;
         }
 
+        private void InitializeDataGridView(IEnumerable<Pessoa> cadastros)
+        {
+            dataGridCadastro.Rows.Clear();
+            dataGridCadastro.Refresh();
+
+            // Create an unbound DataGridView by declaring a column count.
+            dataGridCadastro.ColumnCount = 9;
+            dataGridCadastro.ColumnHeadersVisible = true;
+
+            // Set the column header style.
+            DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
+
+            columnHeaderStyle.BackColor = Color.Beige;
+            columnHeaderStyle.Font = new Font("Verdana", 8, FontStyle.Bold);
+            dataGridCadastro.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
+
+            // Set the column header names.
+            dataGridCadastro.Columns[0].Name = "Id";
+            dataGridCadastro.Columns[1].Name = "Nome";
+            dataGridCadastro.Columns[2].Name = "CPF";
+            dataGridCadastro.Columns[3].Name = "Email";
+            dataGridCadastro.Columns[4].Name = "Endereco";
+            dataGridCadastro.Columns[5].Name = "Telefone";
+            dataGridCadastro.Columns[6].Name = "Tipo";
+            dataGridCadastro.Columns[7].Name = "Código Equipe";
+            dataGridCadastro.Columns[8].Name = "Nome Equipe";
+
+            dataGridCadastro.Columns[1].MinimumWidth = 270;
+            dataGridCadastro.Columns[3].MinimumWidth = 200;
+
+            // Populate the rows.
+
+            foreach (Pessoa p in cadastros)
+            {
+                if(p.Tipo() == PessoaTipo.Pessoa)
+                {
+                    dataGridCadastro.Rows.Add(new string[] { p.Id.ToString(),
+                    p.Nome,
+                    p.CPF,
+                    p.Email,
+                    p.Endereco,
+                    p.Telefone,
+                    "Pessoa",
+                    "",
+                    ""});
+                }
+                else
+                {
+                    Usuario aux = (Usuario)p;
+                    dataGridCadastro.Rows.Add(new string[] { p.Id.ToString(),
+                    p.Nome,
+                    p.CPF,
+                    p.Email,
+                    p.Endereco,
+                    p.Telefone,
+                    "Usuário",
+                    aux.CodigoEquipe.ToString(),
+                    aux.NomeEquipe});
+                }
+                
+            }
+
+        }
+
         private void CarregarGrind()
         {
             try
             {
                 //var CCD = ControlFornecedor.TodasFornecedor();
-                //GridItensFornecedor.DataSource = CCD;
+                var pessoas = PessoaDAL.GetInstancia().ListarTudo();
+                InitializeDataGridView(pessoas);
             }
             catch (Exception ex)
             {
@@ -52,6 +117,7 @@ namespace HelpDesk
 
         private void CadastroPessoas_Load(object sender, EventArgs e)
         {
+            CarregarGrind();
             PreencherCombobox(CadastrosType.Equipe);
         }
 

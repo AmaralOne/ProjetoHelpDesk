@@ -46,6 +46,7 @@
     <Compile Include="Arquivo.cs" />
     <Compile Include="CadastrosType.cs" />
     <Compile Include="Equipe.cs" />
+    <Compile Include="ExtendDAL.cs" />
     <Compile Include="FactoryCadastros.cs" />
     <Compile Include="ICadastro.cs" />
     <Compile Include="IPessoa.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Servico.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Ticket.cs" />
+    <Compile Include="TypeModel.cs" />
     <Compile Include="Urgencia.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Util.cs" />

@@ -101,6 +101,12 @@ namespace HelpDesk
 
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
+            //PessoaDAL.GetInstancia().Inserir(new Model.Pessoa(1, "Flávio Filho", "2", "22", "sfs2@", "sfs"));
+            //PessoaDAL.GetInstancia().Atualizar(new Model.Pessoa(1, "Flávio Filho", "2", "22", "sfs2@", "sfs"));
+            //PessoaDAL.GetInstancia().Remover(new Model.Pessoa(2, "Flávio Filho", "2", "22", "sfs2@", "sfs"));
+            //PessoaDAL.GetInstancia().ListarPorParametros("Flávio Filho");
+            //IEnumerable<Pessoa> d = PessoaDAL.GetInstancia().ListarTudo();
+            //Pessoa p = PessoaDAL.GetInstancia().LocarizarPorCodigo(1);
             CadastroPessoas.GetInstancia().Show();
         }
 

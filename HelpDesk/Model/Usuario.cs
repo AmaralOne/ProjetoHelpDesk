@@ -34,6 +34,11 @@ namespace Model
 
         public override PessoaTipo Tipo() { return PessoaTipo.Usuario; }
 
+        public string GetSenha()
+        {
+            return Senha;
+        }
+
         public bool Autentificacao(string Nome, string Senha)
         {
             if (this.Nome == Nome && this.Senha == Util.CalculateSHA1(Senha))
