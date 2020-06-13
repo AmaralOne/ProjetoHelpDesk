@@ -48,6 +48,7 @@
     <Compile Include="Equipe.cs" />
     <Compile Include="FactoryCadastros.cs" />
     <Compile Include="ICadastro.cs" />
+    <Compile Include="IPessoa.cs" />
     <Compile Include="Mensagem.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

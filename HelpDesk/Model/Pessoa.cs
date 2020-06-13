@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Pessoa
+    public class Pessoa:IPessoa
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -27,6 +27,20 @@ namespace Model
         }
 
         public virtual PessoaTipo Tipo() { return PessoaTipo.Pessoa; }
+
+        public int GetId() { return this.Id; }
+
+        public void SetId(int ID)
+        {
+            this.Id = ID;
+        }
+
+        public string GetNome() { return this.Nome; }
+
+        public void SetNome(string NOME)
+        {
+            this.Nome = NOME;
+        }
 
         public static bool ValidaEmail(String email)
         {

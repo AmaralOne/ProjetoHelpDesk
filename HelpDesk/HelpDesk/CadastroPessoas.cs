@@ -323,11 +323,13 @@ namespace HelpDesk
             {
                 txt_Senha.Enabled = true;
                 comboBoxEquipe.Enabled = true;
+                PessoaDAO.GetInstancia(PessoaTipo.Usuario);
             }
             else
             {
                 txt_Senha.Enabled = false;
                 comboBoxEquipe.Enabled = false;
+                PessoaDAO.GetInstancia(PessoaTipo.Pessoa);
             }
         }
     }

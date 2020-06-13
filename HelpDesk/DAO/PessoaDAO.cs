@@ -1,38 +1,41 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAO
 {
-     public class CadastroSimplesDAO
+     public class PessoaDAO
     {
-        private static CadastroSimplesDAO instancia = null;
+        private static PessoaDAO instancia = null;
 
-        private string Tabela = "Equipe";
+        private string Tabela = "PESSOATICKET";
         private string Colunas = "Id, Nome ";
 
-        private static CadastrosType type = 0;
+        private static PessoaTipo type;
 
 
-        private CadastroSimplesDAO() { }
+        private PessoaDAO() { }
 
-        public static CadastroSimplesDAO GetInstancia(CadastrosType typeCadastro)
+        public static PessoaDAO GetInstancia(PessoaTipo typePessoa)
         {
             if (instancia == null)
             {
-                instancia = new CadastroSimplesDAO();
+                instancia = new PessoaDAO();
             }
 
-            type = typeCadastro;
+            type = typePessoa;
             
 
             return instancia;
         }
 
 
-        public void Atualizar(ICadastro Model)
+        public void Atualizar(IPessoa Model)
         {
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
@@ -47,7 +50,7 @@ namespace DAO
             }
         }
 
-        public bool Remover(ICadastro Model)
+        public bool Remover(IPessoa Model)
         {
             bool retornar = false;
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
@@ -72,7 +75,7 @@ namespace DAO
             GC.SuppressFinalize(this);
         }
 
-        public ICadastro Inserir(ICadastro Model)
+        public IPessoa Inserir(IPessoa Model)
         {
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
@@ -93,9 +96,9 @@ namespace DAO
             return Model;
         }
 
-        public IEnumerable<ICadastro> ListarPorParametros(params object[] Keys)
+        public IEnumerable<IPessoa> ListarPorParametros(params object[] Keys)
         {
-            List<ICadastro> colecoes = new List<ICadastro>();
+            List<IPessoa> colecoes = new List<IPessoa>();
 
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
@@ -112,7 +115,7 @@ namespace DAO
 
                     foreach (DataRow row in tabela.Rows)
                     {
-                        ICadastro model = FactoryCadastros.GetCadastro(type);
+                        IPessoa model = FactoryPessoas.GetPessoas(type);
 
                         model.SetId(int.Parse(row["Id"].ToString()));
                         model.SetNome(row["Nome"].ToString());
