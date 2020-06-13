@@ -202,9 +202,9 @@
             this.txt_Assunto.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Assunto.ForeColor = System.Drawing.SystemColors.MenuText;
             this.txt_Assunto.Location = new System.Drawing.Point(217, 32);
-            this.txt_Assunto.MinimumSize = new System.Drawing.Size(0, 28);
+            this.txt_Assunto.MinimumSize = new System.Drawing.Size(2, 28);
             this.txt_Assunto.Name = "txt_Assunto";
-            this.txt_Assunto.Size = new System.Drawing.Size(526, 28);
+            this.txt_Assunto.Size = new System.Drawing.Size(526, 27);
             this.txt_Assunto.TabIndex = 13;
             // 
             // label7
@@ -253,6 +253,7 @@
             this.btn_Salvar.TabIndex = 17;
             this.btn_Salvar.Text = "Salvar";
             this.btn_Salvar.UseVisualStyleBackColor = false;
+            this.btn_Salvar.Click += new System.EventHandler(this.btn_Salvar_Click);
             // 
             // label8
             // 

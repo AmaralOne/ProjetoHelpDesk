@@ -116,7 +116,21 @@ namespace HelpDesk
 
         private void btn_Alterar_Click(object sender, EventArgs e)
         {
-
+            Ticket ticket = new Ticket();
+            ticket.NomePessoa = "Flávio";
+            ticket.Assunto = "teste";
+            ticket.CodigoPessoa = 1;
+            ticket.CodigoStatus = 1;
+            ticket.CodigoServico = 1;
+            ticket.CodigoUrgencia = 1;
+            ticket.CodigoResponsavel = 2;
+            ticket.NomeResponsavel = "Matheus";
+            ticket.PrevisaoTermico = DateTime.Now;
+            List<Mensagem> aux = new List<Mensagem>();
+            aux.Add(new Mensagem(1, 1, "Flávio", DateTime.Now, "Teste"));
+            ticket.ListaAcoes = aux.AsEnumerable();
+            ticket.ListaAcoes.Count();
+            CadastroTicket.GetInstancia(ticket).Show();
         }
     }
 }
