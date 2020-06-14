@@ -97,12 +97,14 @@ namespace HelpDesk
 
 
                 List<Pessoa> pessoas = new List<Pessoa>();
+                /*
                 pessoas.Add(new Pessoa(1, "Flávio","222", "9999", "f@f.com", "e"));
                 pessoas.Add(new Pessoa(2, "Joao", "222", "9999", "f@f.com", "e"));
                 pessoas.Add(new Pessoa(3, "Victor", "222", "9999", "f@f.com", "e"));
                 pessoas.Add(new Pessoa(4, "Maria", "222", "9999", "f@f.com", "e"));
                 pessoas.Add(new Pessoa(5, "Luis", "222", "9999", "f@f.com", "e"));
                 pessoas.Add(new Pessoa(6, "Karol", "222", "9999", "f@f.com", "e"));
+                */
                 IEnumerator<Pessoa> p = pessoas.GetEnumerator();
                 IEnumerable<Pessoa> p2 = pessoas.AsEnumerable();
 
@@ -334,6 +336,11 @@ namespace HelpDesk
             {
                 MessageBox.Show($"Erro!!!\nAssunto deve ser preecnido", $"Cadastro de Ticket");
             }
+        }
+
+        private void comboBoxPessoas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -248,6 +248,7 @@
             this.txt_Nome.Name = "txt_Nome";
             this.txt_Nome.Size = new System.Drawing.Size(299, 20);
             this.txt_Nome.TabIndex = 8;
+            this.txt_Nome.TextChanged += new System.EventHandler(this.txt_Nome_TextChanged);
             // 
             // txt_pesquisa
             // 

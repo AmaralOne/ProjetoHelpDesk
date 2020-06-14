@@ -8,7 +8,7 @@ namespace Model
 {
     public class FactoryPessoas
     {
-        public static FactoryPessoas GetPessoas(PessoaTipo type)
+        public static Pessoa GetPessoas(PessoaTipo type)
         {
             switch (type)
             {

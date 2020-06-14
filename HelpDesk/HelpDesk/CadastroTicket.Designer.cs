@@ -73,6 +73,7 @@
             this.comboBoxPessoas.Name = "comboBoxPessoas";
             this.comboBoxPessoas.Size = new System.Drawing.Size(178, 28);
             this.comboBoxPessoas.TabIndex = 1;
+            this.comboBoxPessoas.SelectedIndexChanged += new System.EventHandler(this.comboBoxPessoas_SelectedIndexChanged);
             // 
             // label1
             // 

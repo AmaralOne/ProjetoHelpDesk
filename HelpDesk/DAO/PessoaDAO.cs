@@ -80,14 +80,15 @@ namespace DAO
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"Insert into {type} (Nome, CPF, Telefone, Email, Endereco) values (@Nome, @CPF, @Telefone, @Email, @Endereco); SET @Id = SCOPE_IDENTITY();";
+                command.CommandText = $"Insert into {type} (Nome, CPF, Telefone, Email, Endereco,Tipo,Senha) values (@Nome, @CPF, @Telefone, @Email, @Endereco,@Tipo,@Senha); SET @Id = SCOPE_IDENTITY();";
 
                 command.Parameters.Add("@Nome", SqlDbType.Text).Value = Model.GetNome();
                 command.Parameters.Add("@CPF", SqlDbType.Text).Value = Model.GetCPF();
                 command.Parameters.Add("@Telefone", SqlDbType.Text).Value = Model.GetTelefone();
                 command.Parameters.Add("@Email", SqlDbType.Text).Value = Model.GetEmail();
                 command.Parameters.Add("@Endereco", SqlDbType.Text).Value = Model.GetEndereco();
-
+                command.Parameters.Add("@Tipo", SqlDbType.Int).Value = type;
+                command.Parameters.Add("@Senha", SqlDbType.Int).Value = 0;
 
                 command.Parameters.AddWithValue("@Id", 0).Direction = ParameterDirection.Output;
 
@@ -153,7 +154,7 @@ namespace DAO
 
                     foreach (DataRow row in tabela.Rows)
                     {
-                        Pessoa model = FactoryPessoa.GetCadastro(PessoaTipo.Pessoa);
+                        Pessoa model = FactoryPessoas.GetPessoas(PessoaTipo.Pessoa);
 
                         model.SetId(int.Parse(row["Id"].ToString()));
                         model.SetNome(row["Nome"].ToString());

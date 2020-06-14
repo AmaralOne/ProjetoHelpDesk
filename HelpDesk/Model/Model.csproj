@@ -49,7 +49,6 @@
     <Compile Include="ExtendDAL.cs" />
     <Compile Include="FactoryCadastros.cs" />
     <Compile Include="ICadastro.cs" />
-    <Compile Include="IPessoa.cs" />
     <Compile Include="Mensagem.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +60,7 @@
     <Compile Include="Usuario.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="PessoaTipo.cs" />
+    <Compile Include="FactoryPessoas.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

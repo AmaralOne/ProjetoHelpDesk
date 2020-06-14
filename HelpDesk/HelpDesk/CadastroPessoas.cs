@@ -169,7 +169,16 @@ namespace HelpDesk
                 }
                 else
                 {
-                    model = new Pessoa();
+
+                    string nome = txt_Nome.Text;
+                    string cpf = txt_CPF.Text;
+                    string telefone = txt_telefone.Text;
+                    string email = txt_Email.Text;
+                    string endereco = txt_Endereco.Text;
+
+                    model = new Pessoa(nome,cpf,telefone,email,endereco);
+
+                    PessoaDAO.GetInstancia(PessoaTipo.Pessoa).Inserir(model);
                 }
 
                 model.Nome = txt_Nome.Text;
@@ -304,7 +313,7 @@ namespace HelpDesk
             {
                 try
                 {
-                   // cadastoSimplesDao.Remover(model);
+                    PessoaDAO.GetInstancia(PessoaTipo.Pessoa).Remover(model);
                     CarregarGrind();
                 }
                 catch (Exception ex)
@@ -366,10 +375,10 @@ namespace HelpDesk
             try
             {
                 string pesquisa = txt_pesquisa.Text;
-                //IEnumerable<Pessoa> cadastros = cadastoSimplesDao.ListarPorParametros(pesquisa);
+                IEnumerable<Pessoa> cadastros = PessoaDAO.GetInstancia(PessoaTipo.Pessoa).ListarPorParametros(pesquisa);
 
 
-                //InitializeDataGridView(cadastros);
+                InitializeDataGridView(cadastros);
             }
             catch (Exception ex)
             {
@@ -389,14 +398,18 @@ namespace HelpDesk
             {
                 txt_Senha.Enabled = true;
                 comboBoxEquipe.Enabled = true;
-                PessoaDAO.GetInstancia(PessoaTipo.Usuario);
             }
             else
             {
                 txt_Senha.Enabled = false;
                 comboBoxEquipe.Enabled = false;
-                PessoaDAO.GetInstancia(PessoaTipo.Pessoa);
             }
         }
+
+        private void txt_Nome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

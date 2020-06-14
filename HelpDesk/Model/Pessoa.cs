@@ -16,9 +16,8 @@ namespace Model
         public string Endereco { get; set; }
 
         public Pessoa() { }
-        public Pessoa(int Id, string Nome, string CPF, string Telefone, string Email, String Endereco)
+        public Pessoa(string Nome, string CPF, string Telefone, string Email, String Endereco)
         {
-            this.Id = Id;
             this.Nome = Nome;
             this.CPF = CPF;
             this.Telefone = Telefone;
@@ -28,7 +27,7 @@ namespace Model
 
         public virtual PessoaTipo Tipo() { return PessoaTipo.Pessoa; }
 
-        public int GetId() { return this.Id; }
+        public int GetId() { return this.Id;  }
 
         public void SetId(int ID)
         {
