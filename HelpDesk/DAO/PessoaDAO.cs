@@ -35,7 +35,7 @@ namespace DAO
         }
 
 
-        public void Atualizar(IPessoa Model)
+        public void Atualizar(Pessoa Model)
         {
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
@@ -50,7 +50,7 @@ namespace DAO
             }
         }
 
-        public bool Remover(IPessoa Model)
+        public bool Remover(Pessoa Model)
         {
             bool retornar = false;
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
@@ -75,14 +75,19 @@ namespace DAO
             GC.SuppressFinalize(this);
         }
 
-        public IPessoa Inserir(IPessoa Model)
+        public Pessoa Inserir(Pessoa Model)
         {
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"Insert into {type} (Nome) values (@Nome); SET @Id = SCOPE_IDENTITY();";
+                command.CommandText = $"Insert into {type} (Nome, CPF, Telefone, Email, Endereco) values (@Nome, @CPF, @Telefone, @Email, @Endereco); SET @Id = SCOPE_IDENTITY();";
 
                 command.Parameters.Add("@Nome", SqlDbType.Text).Value = Model.GetNome();
+                command.Parameters.Add("@CPF", SqlDbType.Text).Value = Model.GetCPF();
+                command.Parameters.Add("@Telefone", SqlDbType.Text).Value = Model.GetTelefone();
+                command.Parameters.Add("@Email", SqlDbType.Text).Value = Model.GetEmail();
+                command.Parameters.Add("@Endereco", SqlDbType.Text).Value = Model.GetEndereco();
+
 
                 command.Parameters.AddWithValue("@Id", 0).Direction = ParameterDirection.Output;
 
@@ -96,9 +101,12 @@ namespace DAO
             return Model;
         }
 
-        public IEnumerable<IPessoa> ListarPorParametros(params object[] Keys)
+        public IEnumerable<Pessoa> ListarPorParametros(params object[] Keys)
         {
-            List<IPessoa> colecoes = new List<IPessoa>();
+
+            //Buscar 
+
+            List<Pessoa> colecoes = new List<Pessoa>();
 
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
@@ -115,7 +123,7 @@ namespace DAO
 
                     foreach (DataRow row in tabela.Rows)
                     {
-                        IPessoa model = new Pessoa();
+                        Pessoa model = new Pessoa();
 
                         model.SetId(int.Parse(row["Id"].ToString()));
                         model.SetNome(row["Nome"].ToString());
@@ -129,9 +137,9 @@ namespace DAO
             return colecoes.AsEnumerable();
         }
 
-        public IEnumerable<ICadastro> ListarTudo()
+        public IEnumerable<Pessoa> ListarTudo()
         {
-            List<ICadastro> colecoes = new List<ICadastro>();
+            List<Pessoa> colecoes = new List<Pessoa>();
 
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
@@ -145,10 +153,14 @@ namespace DAO
 
                     foreach (DataRow row in tabela.Rows)
                     {
-                        ICadastro model = FactoryCadastros.GetCadastro(CadastrosType.Equipe);
+                        Pessoa model = FactoryPessoa.GetCadastro(PessoaTipo.Pessoa);
 
                         model.SetId(int.Parse(row["Id"].ToString()));
                         model.SetNome(row["Nome"].ToString());
+                        model.SetCPF(row["CPF"].ToString() );
+                        model.SetTelefone(row["Telefone"].ToString() );
+                        model.SetEmail(row["Email"].ToString() );
+                        model.SetEndereco(row["Endereco"].ToString() );
 
                         colecoes.Add(model);
                     }

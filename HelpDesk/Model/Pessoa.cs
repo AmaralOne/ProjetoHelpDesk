@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Pessoa:IPessoa
+    public class Pessoa
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -41,6 +41,35 @@ namespace Model
         {
             this.Nome = NOME;
         }
+
+        public string GetCPF() { return this.CPF; }
+
+        public void SetCPF(string CPF)
+        {
+            this.CPF = CPF;
+        }
+
+        public string GetTelefone() { return this.Telefone; }
+
+        public void SetTelefone(string TELEFONE)
+        {
+            this.Telefone = TELEFONE;
+        }
+
+        public string GetEmail() { return this.Email; }
+
+        public void SetEmail(string EMAIL)
+        {
+            this.Email = EMAIL;
+        }
+
+         public string GetEndereco() { return this.Endereco; }
+
+        public void SetEndereco(string ENDERECO)
+        {
+            this.Endereco = ENDERECO;
+        }
+
 
         public static bool ValidaEmail(String email)
         {
