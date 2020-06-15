@@ -170,5 +170,65 @@ namespace DAO
 
             return command;
         }
+
+        public Usuario LocarizarUsuario(params object[] Keys)
+        {
+            Usuario model = null;
+            using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = $"Select P.Id, P.CPF, P.Nome, P.Email, P.Endereco, P.Telefone, P.Tipo, P.Senha, P.CodigoEquipe, E.Nome as NomeEquipe from Pessoa P inner join Equipe E on E.Id = P.CodigoEquipe Where P.Nome=@Nome;";
+
+                command.Parameters.Add("@Nome", SqlDbType.VarChar).Value = Keys[0];
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        model = (Usuario)MontarObjeto(reader);
+                    }
+                }
+
+            }
+
+            return model;
+        }
+
+        public IEnumerable<Usuario> ListarTodosUsuarios()
+        {
+            List<Usuario> colecoes = new List<Usuario>();
+
+            using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = $"Select P.Id, P.CPF, P.Nome, P.Email, P.Endereco, P.Telefone, P.Tipo, P.Senha, P.CodigoEquipe, E.Nome as NomeEquipe from Pessoa P inner join Equipe E on E.Id = P.CodigoEquipe;";
+
+
+
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    DataTable tabela = new DataTable();
+                    adapter.Fill(tabela);
+
+                    foreach (DataRow row in tabela.Rows)
+                    {
+                        Usuario model = (Usuario)MontarObjeto(row);
+
+                        colecoes.Add(model);
+                    }
+                }
+
+            }
+
+            return colecoes.AsEnumerable();
+        }
+
+        public override bool AutoIncrement()
+        {
+            return true;
+        }
     }
 }

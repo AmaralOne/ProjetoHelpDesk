@@ -10,9 +10,10 @@ namespace Model
     {
         public string Texto { get; set; }
 
-        public Mensagem(int Id, int CodigoUsuario, string NomeUsuario, DateTime data, string Texto)
+        public Mensagem(int Id, int IdTicket, int CodigoUsuario, string NomeUsuario, DateTime data, string Texto)
         {
             this.Id = Id;
+            this.IdTicket = IdTicket;
             this.CodigoUsuario = CodigoUsuario;
             this.NomeUsuario = NomeUsuario;
             this.Data = data;

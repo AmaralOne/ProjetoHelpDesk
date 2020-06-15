@@ -16,6 +16,8 @@ namespace DAO
         public abstract string getTabela();
         public abstract string [] getAtributos();
         public abstract string getIndex();
+
+        public abstract bool AutoIncrement();
         public abstract void getParametros(SqlCommand command, T model);
 
         public abstract void getParametrosIndex(SqlCommand command, T model);
@@ -40,11 +42,20 @@ namespace DAO
             string aux = "";
             foreach(string at in getAtributos())
             {
-                if (!getIndex().Equals(at))
+
+
+                if (AutoIncrement())
                 {
-                    aux = aux + at + "=@" + at+", ";
+                    if (!getIndex().Equals(at))
+                    {
+                        aux = aux + at + "=@" + at + ", ";
+                    }
                 }
-                
+                else
+                {
+                    aux = aux + at + "=@" + at + ", ";
+                }
+
             }
             aux = aux.Substring(0, aux.Length - 2);
 
@@ -56,10 +67,18 @@ namespace DAO
             string aux = "";
             foreach (string at in getAtributos())
             {
-                if (!getIndex().Equals(at))
+                if (AutoIncrement())
+                {
+                    if (!getIndex().Equals(at))
+                    {
+                        aux = aux + at + ", ";
+                    }
+                }
+                else
                 {
                     aux = aux + at + ", ";
                 }
+                
                     
             }
             aux = aux.Substring(0, aux.Length - 2);
@@ -72,18 +91,27 @@ namespace DAO
             string aux = "";
             foreach (string at in getAtributos())
             {
-                if (!getIndex().Equals(at))
+
+
+                if (AutoIncrement())
+                {
+                    if (!getIndex().Equals(at))
+                    {
+                        aux = aux + "@" + at + ", ";
+                    }
+                }
+                else
                 {
                     aux = aux + "@" + at + ", ";
                 }
-                    
+
             }
             aux = aux.Substring(0, aux.Length - 2);
             return aux;
         }
 
 
-        public void Atualizar(T Model)
+        public virtual void Atualizar(T Model)
         {
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
@@ -98,7 +126,7 @@ namespace DAO
             }
         }
 
-        public bool Remover(T Model)
+        public virtual bool Remover(T Model)
         {
 
             bool retornar = false;
@@ -121,7 +149,7 @@ namespace DAO
 
         }
 
-        public T Inserir(T Model)
+        public virtual T Inserir(T Model)
         {
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
             {
@@ -137,7 +165,7 @@ namespace DAO
             return Model;
         }
 
-        public IEnumerable<T> ListarPorParametros(params object[] Keys)
+        public virtual IEnumerable<T> ListarPorParametros(params object[] Keys)
         {
             List<T> colecoes = new List<T>();
 
@@ -166,7 +194,7 @@ namespace DAO
         }
 
 
-        public IEnumerable<T> ListarTudo()
+        public virtual IEnumerable<T> ListarTudo()
         {
             List<T> colecoes = new List<T>();
 
@@ -194,7 +222,7 @@ namespace DAO
             return colecoes.AsEnumerable();
         }
 
-        public T LocarizarPorCodigo(params object[] Keys)
+        public virtual T LocarizarPorCodigo(params object[] Keys)
         {
             T model = MontarObjetoVazio();
             using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())

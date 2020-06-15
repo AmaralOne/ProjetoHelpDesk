@@ -30,13 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.btn_Alterar = new System.Windows.Forms.ToolStripButton();
             this.btn_Excluir = new System.Windows.Forms.ToolStripButton();
             this.btn_Pessoas = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridTicket = new System.Windows.Forms.DataGridView();
             this.dt_Final = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.dt_Inicio = new System.Windows.Forms.DateTimePicker();
@@ -54,10 +56,9 @@
             this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataAlteracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataPrevisao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.btn_Alterar = new System.Windows.Forms.ToolStripButton();
+            this.CodigoPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridTicket)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -77,6 +78,28 @@
             this.toolStrip1.Size = new System.Drawing.Size(800, 22);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(40, 19);
+            this.toolStripButton6.Text = "Novo";
+            this.toolStripButton6.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click_1);
+            // 
+            // btn_Alterar
+            // 
+            this.btn_Alterar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_Alterar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Alterar.Image")));
+            this.btn_Alterar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Alterar.Name = "btn_Alterar";
+            this.btn_Alterar.Size = new System.Drawing.Size(46, 19);
+            this.btn_Alterar.Text = "Alterar";
+            this.btn_Alterar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.btn_Alterar.Click += new System.EventHandler(this.btn_Alterar_Click);
             // 
             // btn_Excluir
             // 
@@ -140,12 +163,12 @@
             this.toolStripButton2.Text = "Serviços";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // dataGridView1
+            // dataGridTicket
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridTicket.AllowUserToAddRows = false;
+            this.dataGridTicket.AllowUserToDeleteRows = false;
+            this.dataGridTicket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridTicket.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Pessoa,
             this.Assunto,
@@ -156,12 +179,13 @@
             this.Equipe,
             this.DataInicio,
             this.DataAlteracao,
-            this.DataPrevisao});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 365);
-            this.dataGridView1.TabIndex = 6;
+            this.DataPrevisao,
+            this.CodigoPessoa});
+            this.dataGridTicket.Location = new System.Drawing.Point(12, 25);
+            this.dataGridTicket.Name = "dataGridTicket";
+            this.dataGridTicket.ReadOnly = true;
+            this.dataGridTicket.Size = new System.Drawing.Size(776, 365);
+            this.dataGridTicket.TabIndex = 6;
             // 
             // dt_Final
             // 
@@ -176,6 +200,7 @@
             this.dt_Final.Name = "dt_Final";
             this.dt_Final.Size = new System.Drawing.Size(178, 27);
             this.dt_Final.TabIndex = 21;
+            this.dt_Final.ValueChanged += new System.EventHandler(this.dt_Final_ValueChanged);
             // 
             // label8
             // 
@@ -200,6 +225,7 @@
             this.dt_Inicio.Name = "dt_Inicio";
             this.dt_Inicio.Size = new System.Drawing.Size(178, 27);
             this.dt_Inicio.TabIndex = 23;
+            this.dt_Inicio.ValueChanged += new System.EventHandler(this.dt_Inicio_ValueChanged);
             // 
             // label1
             // 
@@ -220,8 +246,9 @@
             this.txt_Pesquisar.Location = new System.Drawing.Point(16, 416);
             this.txt_Pesquisar.MinimumSize = new System.Drawing.Size(2, 28);
             this.txt_Pesquisar.Name = "txt_Pesquisar";
-            this.txt_Pesquisar.Size = new System.Drawing.Size(362, 28);
+            this.txt_Pesquisar.Size = new System.Drawing.Size(362, 27);
             this.txt_Pesquisar.TabIndex = 25;
+            this.txt_Pesquisar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_Pesquisar_KeyUp);
             // 
             // label6
             // 
@@ -235,12 +262,14 @@
             // 
             // ID
             // 
+            this.ID.DataPropertyName = "Id";
             this.ID.HeaderText = "Id";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             // 
             // Pessoa
             // 
+            this.Pessoa.DataPropertyName = "NomePessoa";
             this.Pessoa.HeaderText = "Pessoa";
             this.Pessoa.Name = "Pessoa";
             this.Pessoa.ReadOnly = true;
@@ -248,6 +277,7 @@
             // 
             // Assunto
             // 
+            this.Assunto.DataPropertyName = "Assunto";
             this.Assunto.HeaderText = "Assunto";
             this.Assunto.Name = "Assunto";
             this.Assunto.ReadOnly = true;
@@ -255,6 +285,7 @@
             // 
             // Responsavel
             // 
+            this.Responsavel.DataPropertyName = "NomeResponsavel";
             this.Responsavel.HeaderText = "Responsável";
             this.Responsavel.Name = "Responsavel";
             this.Responsavel.ReadOnly = true;
@@ -262,67 +293,60 @@
             // 
             // Servico
             // 
+            this.Servico.DataPropertyName = "NomeServico";
             this.Servico.HeaderText = "Serviços";
             this.Servico.Name = "Servico";
             this.Servico.ReadOnly = true;
             // 
             // Status
             // 
+            this.Status.DataPropertyName = "NomeStatus";
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
             // 
             // Urgencia
             // 
+            this.Urgencia.DataPropertyName = "NomeUrgencia";
             this.Urgencia.HeaderText = "Urgência";
             this.Urgencia.Name = "Urgencia";
             this.Urgencia.ReadOnly = true;
             // 
             // Equipe
             // 
+            this.Equipe.DataPropertyName = "NomeEquipe";
             this.Equipe.HeaderText = "Equipe";
             this.Equipe.Name = "Equipe";
             this.Equipe.ReadOnly = true;
             // 
             // DataInicio
             // 
+            this.DataInicio.DataPropertyName = "DataInicio";
             this.DataInicio.HeaderText = "Data Criação";
             this.DataInicio.Name = "DataInicio";
             this.DataInicio.ReadOnly = true;
             // 
             // DataAlteracao
             // 
+            this.DataAlteracao.DataPropertyName = "DataAlteracao";
             this.DataAlteracao.HeaderText = "Data Alteração";
             this.DataAlteracao.Name = "DataAlteracao";
             this.DataAlteracao.ReadOnly = true;
             // 
             // DataPrevisao
             // 
+            this.DataPrevisao.DataPropertyName = "PrevisaoTermico";
             this.DataPrevisao.HeaderText = "Data Previsão";
             this.DataPrevisao.Name = "DataPrevisao";
             this.DataPrevisao.ReadOnly = true;
             // 
-            // toolStripButton6
+            // CodigoPessoa
             // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(40, 19);
-            this.toolStripButton6.Text = "Novo";
-            this.toolStripButton6.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click_1);
-            // 
-            // btn_Alterar
-            // 
-            this.btn_Alterar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_Alterar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Alterar.Image")));
-            this.btn_Alterar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Alterar.Name = "btn_Alterar";
-            this.btn_Alterar.Size = new System.Drawing.Size(46, 19);
-            this.btn_Alterar.Text = "Alterar";
-            this.btn_Alterar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.btn_Alterar.Click += new System.EventHandler(this.btn_Alterar_Click);
+            this.CodigoPessoa.DataPropertyName = "CodigoPessoa";
+            this.CodigoPessoa.HeaderText = "CodigoPessoa";
+            this.CodigoPessoa.Name = "CodigoPessoa";
+            this.CodigoPessoa.ReadOnly = true;
+            this.CodigoPessoa.Visible = false;
             // 
             // Form1
             // 
@@ -335,7 +359,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dt_Final);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridTicket);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -346,7 +370,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridTicket)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,13 +384,15 @@
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripButton btn_Excluir;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridTicket;
         private System.Windows.Forms.DateTimePicker dt_Final;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dt_Inicio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_Pesquisar;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton btn_Alterar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pessoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Assunto;
@@ -378,8 +404,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DataInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataAlteracao;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataPrevisao;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
-        private System.Windows.Forms.ToolStripButton btn_Alterar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPessoa;
     }
 }
 

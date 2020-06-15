@@ -10,6 +10,8 @@ namespace Model
     {
         // flavio 
         public int Id { get; set; }
+
+        public int IdTicket { get; set; }
         public int CodigoUsuario { get; set; }
         public string NomeUsuario { get; set; }
         public DateTime Data { get; set; }

@@ -41,15 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcaoDAL.cs" />
     <Compile Include="CadastroSimplesDAO.cs" />
     <Compile Include="Conexao.cs" />
     <Compile Include="EquipeDAO.cs" />
     <Compile Include="GenericDAO.cs" />
     <Compile Include="IDAO.cs" />
-    <Compile Include="IDAO_Cadastro.cs" />
     <Compile Include="PessoaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PessoaDAO.cs" />
+    <Compile Include="TicketDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

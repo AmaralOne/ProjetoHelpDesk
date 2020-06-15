@@ -54,6 +54,8 @@
             this.btn_Deletar = new System.Windows.Forms.Button();
             this.btn_Alterar = new System.Windows.Forms.Button();
             this.btn_Salvar = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtSenhaAtual = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCadastro)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +74,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.txtSenhaAtual);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.comboBoxEquipe);
             this.panel1.Controls.Add(this.label8);
@@ -136,7 +140,7 @@
             // 
             this.checkBoxUsuario.AutoSize = true;
             this.checkBoxUsuario.Enabled = false;
-            this.checkBoxUsuario.Location = new System.Drawing.Point(245, 115);
+            this.checkBoxUsuario.Location = new System.Drawing.Point(340, 115);
             this.checkBoxUsuario.Name = "checkBoxUsuario";
             this.checkBoxUsuario.Size = new System.Drawing.Size(62, 17);
             this.checkBoxUsuario.TabIndex = 18;
@@ -329,6 +333,24 @@
             this.btn_Salvar.UseVisualStyleBackColor = true;
             this.btn_Salvar.Click += new System.EventHandler(this.btn_Salvar_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(228, 99);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Senha Atual:";
+            // 
+            // txtSenhaAtual
+            // 
+            this.txtSenhaAtual.Enabled = false;
+            this.txtSenhaAtual.Location = new System.Drawing.Point(231, 115);
+            this.txtSenhaAtual.Name = "txtSenhaAtual";
+            this.txtSenhaAtual.Size = new System.Drawing.Size(76, 20);
+            this.txtSenhaAtual.TabIndex = 25;
+            this.txtSenhaAtual.UseSystemPasswordChar = true;
+            // 
             // CadastroPessoas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,5 +407,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBoxEquipe;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtSenhaAtual;
     }
 }

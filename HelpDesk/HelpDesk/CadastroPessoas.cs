@@ -151,20 +151,46 @@ namespace HelpDesk
                 Pessoa model = null;
                 bool erro = false;
 
+                
+
+
                 if (checkBoxUsuario.Checked == true)
                 {
-                    string equipe = comboBoxEquipe.SelectedValue.ToString();
+                    int equipe = int.Parse(comboBoxEquipe.SelectedValue.ToString());
                     string senha = txt_Senha.Text;
 
-                    ICadastro equipe1 = CadastroSimplesDAO.GetInstancia(CadastrosType.Equipe).LocarizarPorNome(equipe);
-                    if (equipe1 != null && !senha.Equals(""))
+                    if (novo == true)
                     {
-                        model = new Usuario(equipe1.GetId(), equipe1.GetNome(), senha);
+                        ICadastro equipe1 = CadastroSimplesDAO.GetInstancia(CadastrosType.Equipe).LocarizarPorCodigo(equipe);
+                        if (equipe1 != null && !senha.Equals(""))
+                        {
+                            model = new Usuario(equipe1.GetId(), equipe1.GetNome(), Util.CalculateSHA1(senha));
+                            
+                        }
+                        else
+                        {
+                            erro = true;
+                        }
+
+
                     }
                     else
                     {
-                        erro = true;
+                        int id = int.Parse(txt_Id.Text);
+                        string senhaAtual = txtSenhaAtual.Text;
+                        Usuario usuario = (Usuario)PessoaDAL.GetInstancia().LocarizarPorCodigo(id);
+
+                        if(!usuario.AlterarSenha(txt_Nome.Text, senhaAtual, senha))
+                        {
+                            MessageBox.Show($"Erro ao incluir Pessoa\n Mensagem de erro: A senha atual está errada", $"Cadastro de Pessoa");
+                            erro = true;
+                        }
+                        model = usuario;
                     }
+
+                    
+
+                    
                     
                 }
                 else
@@ -178,7 +204,7 @@ namespace HelpDesk
 
                     model = new Pessoa(nome,cpf,telefone,email,endereco);
 
-                    PessoaDAO.GetInstancia(PessoaTipo.Pessoa).Inserir(model);
+                    
                 }
 
                 model.Nome = txt_Nome.Text;
@@ -188,15 +214,17 @@ namespace HelpDesk
                 model.Telefone = txt_telefone.Text;
  
                
-                if(erro && Pessoa.ValidaEmail(model.Email) && Pessoa.ValidaTelefone(model.Telefone))
+                if(erro == false && Pessoa.ValidaEmail(model.Email))
                 {
                           
                      if (novo)
                      {
                          try
                          {
-                                //cadastoSimplesDao.Inserir(model);
-                         }
+                            
+                            //PessoaDAO.GetInstancia(PessoaTipo.Pessoa).Inserir(model);
+                            PessoaDAL.GetInstancia().Inserir(model);
+                        }
                          catch (Exception ex)
                          {
                                 MessageBox.Show($"Erro ao incluir Pessoa\n Mensagem de erro: " + ex, $"Cadastro de Pessoa");
@@ -208,8 +236,10 @@ namespace HelpDesk
 
                          try
                          {
-                                //cadastoSimplesDao.Atualizar(model);
-                         }
+                            model.Id = int.Parse(txt_Id.Text);
+                            PessoaDAL.GetInstancia().Atualizar(model);
+                            //cadastoSimplesDao.Atualizar(model);
+                        }
                          catch (Exception ex)
                          {
                                 MessageBox.Show($"Erro ao alterar Pessoa\n Mensagem de erro: " + ex, $"Cadastro de Pessoa");
@@ -234,6 +264,15 @@ namespace HelpDesk
             }
         }
 
+        private IEnumerable<object> GetItems(IEnumerable<ICadastro> cadastros)
+        {
+            foreach (ICadastro c in cadastros)
+            {
+                yield return new { Text = c.GetNome(), Value = c.GetId() };
+            }
+
+        }
+
         private void PreencherCombobox(CadastrosType type)
         {
             try
@@ -243,11 +282,10 @@ namespace HelpDesk
 
                 IEnumerable<ICadastro> cadastros = cadastoSimplesDao.ListarTudo();
 
-                foreach (ICadastro c in cadastros)
-                {
+                comboBoxEquipe.DisplayMember = "Text";
+                comboBoxEquipe.ValueMember = "Value";
 
-                    comboBoxEquipe.Items.Add(c.GetNome());
-                }
+                comboBoxEquipe.DataSource = GetItems(cadastros).ToList();
 
                 comboBoxEquipe.SelectedIndex = 0;
             }
@@ -262,8 +300,31 @@ namespace HelpDesk
         {
             try
             {
+
                 txt_Id.Text = dataGridCadastro.CurrentRow.Cells[0].Value.ToString();
+                Pessoa p = PessoaDAL.GetInstancia().LocarizarPorCodigo(int.Parse(txt_Id.Text));
                 txt_Nome.Text = dataGridCadastro.CurrentRow.Cells[1].Value.ToString();
+                txt_CPF.Text = dataGridCadastro.CurrentRow.Cells[2].Value.ToString();
+                txt_Email.Text = dataGridCadastro.CurrentRow.Cells[3].Value.ToString();
+                txt_Endereco.Text = dataGridCadastro.CurrentRow.Cells[4].Value.ToString();
+                txt_telefone.Text = dataGridCadastro.CurrentRow.Cells[5].Value.ToString();
+
+                if (p.Tipo() == PessoaTipo.Usuario)
+                {
+                    Usuario aux = (Usuario)p;
+                    comboBoxEquipe.SelectedValue = aux.CodigoEquipe;
+                    checkBoxUsuario.Checked = true;
+                    comboBoxEquipe.Enabled = true;
+                    txtSenhaAtual.Enabled = true;
+                    txt_Senha.Enabled = true;
+                }
+                else
+                {
+                    comboBoxEquipe.Enabled = false;
+                    txtSenhaAtual.Enabled = false;
+                    txt_Senha.Enabled = false;
+                }
+
             }
             catch (Exception)
             {
@@ -271,6 +332,7 @@ namespace HelpDesk
                 erro = true;
             }
 
+            
 
 
             if (erro == false)
@@ -282,14 +344,14 @@ namespace HelpDesk
                 txt_CPF.Enabled = true;
                 txt_Email.Enabled = true;
                 txt_telefone.Enabled = true;
-                txt_Senha.Enabled = false;
-                comboBoxEquipe.Enabled = false;
                 checkBoxUsuario.Enabled = true;
                 btn_Salvar.Enabled = true;
                 txt_Nome.Focus();
                 btn_Cancelar.Enabled = true;
                 btn_Alterar.Enabled = false;
                 btn_Deletar.Enabled = false;
+
+                
 
                 novo = false;
             }
@@ -357,6 +419,9 @@ namespace HelpDesk
             txt_Senha.Enabled = false;
             txt_Senha.Text = "";
 
+            txtSenhaAtual.Enabled = false;
+            txtSenhaAtual.Text = "";
+
             comboBoxEquipe.Enabled = false;
             //comboBoxEquipe.SelectedIndex = 0;
 
@@ -375,7 +440,8 @@ namespace HelpDesk
             try
             {
                 string pesquisa = txt_pesquisa.Text;
-                IEnumerable<Pessoa> cadastros = PessoaDAO.GetInstancia(PessoaTipo.Pessoa).ListarPorParametros(pesquisa);
+                //IEnumerable<Pessoa> cadastros = PessoaDAO.GetInstancia(PessoaTipo.Pessoa).ListarPorParametros(pesquisa);
+                IEnumerable<Pessoa> cadastros = PessoaDAL.GetInstancia().ListarPorParametros(pesquisa);
 
 
                 InitializeDataGridView(cadastros);
@@ -396,13 +462,24 @@ namespace HelpDesk
         {
             if (checkBoxUsuario.Checked == true)
             {
-                txt_Senha.Enabled = true;
-                comboBoxEquipe.Enabled = true;
+                if(novo == true)
+                {
+                    txt_Senha.Enabled = true;
+                    comboBoxEquipe.Enabled = true;
+                }
+                else
+                {
+                    txt_Senha.Enabled = true;
+                    txtSenhaAtual.Enabled = true;
+                    comboBoxEquipe.Enabled = true;
+                }
+                
             }
             else
             {
                 txt_Senha.Enabled = false;
                 comboBoxEquipe.Enabled = false;
+                txtSenhaAtual.Enabled = false;
             }
         }
 

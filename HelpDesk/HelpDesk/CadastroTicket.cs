@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DAO;
 
 namespace HelpDesk
 {
@@ -96,7 +97,7 @@ namespace HelpDesk
             {
 
 
-                List<Pessoa> pessoas = new List<Pessoa>();
+                List<Pessoa> pessoas = PessoaDAL.GetInstancia().ListarTudo().ToList();
                 /*
                 pessoas.Add(new Pessoa(1, "Flávio","222", "9999", "f@f.com", "e"));
                 pessoas.Add(new Pessoa(2, "Joao", "222", "9999", "f@f.com", "e"));
@@ -126,15 +127,8 @@ namespace HelpDesk
             {
 
 
-                List<Usuario> usuarios = new List<Usuario>();
-                Usuario u = new Usuario();
-                u.Nome = "Flavio";
-                u.Id = 1;
-                Usuario u1 = new Usuario();
-                u1.Nome = "Matheus";
-                u1.Id = 2;
-                usuarios.Add(u1);
-                usuarios.Add(u);
+                List<Usuario> usuarios = PessoaDAL.GetInstancia().ListarTodosUsuarios().ToList();
+
                
 
          
@@ -209,7 +203,12 @@ namespace HelpDesk
         private void btn_Add_Click(object sender, EventArgs e)
         {
             Usuario user = Login.GetUsuario();
-            Mensagem mensagem = new Mensagem((itens_acoes.Count)+1, user.Id, user.Nome, DateTime.Now, txt_Mensagem.Text);
+            int idTicket = 0;
+            if (novo == false)
+            {
+                idTicket = ticket.Id;
+            }
+            Mensagem mensagem = new Mensagem((itens_acoes.Count)+1, idTicket, user.Id, user.Nome, DateTime.Now, txt_Mensagem.Text);
 
 
             itens_acoes.Add(mensagem);
@@ -250,7 +249,14 @@ namespace HelpDesk
                 string caminho = Path.GetDirectoryName(path);
 
                 Usuario user = Login.GetUsuario();
-                Arquivo arquivo  = new Arquivo((itens_acoes.Count) + 1, user.Id, user.Nome, DateTime.Now,caminho,nome,formato);
+
+                int idTicket = 0;
+                if(novo == false)
+                {
+                    idTicket = ticket.Id;
+                }
+
+                Arquivo arquivo  = new Arquivo((itens_acoes.Count) + 1, idTicket, user.Id, user.Nome, DateTime.Now,caminho,nome,formato);
 
                 itens_acoes.Add(arquivo);
                 AcoesTickets acoes = new AcoesTickets(arquivo);
@@ -304,6 +310,7 @@ namespace HelpDesk
                         ticket.DataInicio = DateTime.Now;
                         try
                         {
+                            TicketDAL.GetInstancia().Inserir(ticket);
                             //cadastoSimplesDao.Inserir(model);
                             this.Close();
                         }
@@ -319,6 +326,7 @@ namespace HelpDesk
                         try
                         {
                             //cadastoSimplesDao.Atualizar(model);
+                            TicketDAL.GetInstancia().Atualizar(ticket);
                             this.Close();
                         }
                         catch (Exception ex)

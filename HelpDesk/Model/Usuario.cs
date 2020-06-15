@@ -19,13 +19,13 @@ namespace Model
             this.Nome = NomeUsuario;
             this.CodigoEquipe = codigoEquipe;
             this.NomeEquipe = nomeEquipe;
-            this.Senha = Util.CalculateSHA1(senha);
+            this.Senha = (senha);
         }
         public Usuario(int codigoEquipe, string nomeEquipe, string senha): base()
         {
             CodigoEquipe = codigoEquipe;
             NomeEquipe = nomeEquipe;
-            Senha = Util.CalculateSHA1(senha);
+            Senha = (senha);
         }
 
         public int CodigoEquipe { get; set; }

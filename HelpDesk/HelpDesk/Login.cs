@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using DAO;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,21 +52,32 @@ namespace HelpDesk
 
         private void btn_Entrar_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario(1,"Flávio Filho",1,"Suporte","123");
+            //Usuario usuario = new Usuario(1,"Flávio Filho",1,"Suporte", Util.CalculateSHA1("123"));
 
-            
-            if (usuario.Autentificacao(txt_Nome.Text, txt_Senha.Text))
+            Usuario usuario = PessoaDAL.GetInstancia().LocarizarUsuario(txt_Nome.Text);
+
+            if(usuario != null)
             {
-                logado = usuario;
-                Form1.GetInstancia(this).Show();
-                this.Hide();
+                if (usuario.Autentificacao(txt_Nome.Text, txt_Senha.Text))
+                {
+                    logado = usuario;
+                    Form1.GetInstancia(this).Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Erro no Login!!!\nNome ou Senha estão incorretos.", "Login");
+
+                }
             }
             else
             {
-                MessageBox.Show("Erro no Login!!!\n Nome ou Senha estão incorretos.", "Login");
+                MessageBox.Show("Erro no Login!!!\n Nome está incorretos.", "Login");
 
             }
-            
+
+
+
         }
     }
 }

@@ -66,7 +66,28 @@ namespace HelpDesk
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            dt_Inicio.Value = DateTime.Now.AddMonths(-1);
+            dt_Final.Value = DateTime.Now;
 
+        }
+
+        void CarregarGrid()
+        {
+            List<Ticket> tickets = null;
+            try
+            {
+                dataGridTicket.AutoGenerateColumns = false;
+                tickets = TicketDAL.GetInstancia().ListarPorParametros(txt_Pesquisar.Text, dt_Inicio.Value, dt_Final.Value).ToList();
+                dataGridTicket.DataSource = null;
+                dataGridTicket.DataSource = tickets;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Erro!!!\nNão foi possivel buscar os Tickets no Banco de Dados. " + ex.Message, $"Lista de Chamados");
+
+            }
+            
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -112,7 +133,31 @@ namespace HelpDesk
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            
+            Ticket model = new Ticket();
+            bool erro = false;
+            try
+            {
+                model.Id = (int.Parse(dataGridTicket.CurrentRow.Cells[0].Value.ToString()));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"Erro!!!\nSelecione um Ticket para poder Deletar", $"Lista de Chamados");
+                erro = true;
+            }
+
+            if (erro == false)
+            {
+                try
+                {
+                    TicketDAL.GetInstancia().Remover(model);
+                    CarregarGrid();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao tentar Deletar Ticket!!!\n" + ex.Message, $"Lista de Chamados");
+
+                }
+            }
         }
 
         private void toolStripButton6_Click_1(object sender, EventArgs e)
@@ -122,21 +167,49 @@ namespace HelpDesk
 
         private void btn_Alterar_Click(object sender, EventArgs e)
         {
-            Ticket ticket = new Ticket();
-            ticket.NomePessoa = "Flávio";
-            ticket.Assunto = "teste";
-            ticket.CodigoPessoa = 1;
-            ticket.CodigoStatus = 1;
-            ticket.CodigoServico = 1;
-            ticket.CodigoUrgencia = 1;
-            ticket.CodigoResponsavel = 2;
-            ticket.NomeResponsavel = "Matheus";
-            ticket.PrevisaoTermico = DateTime.Now;
-            List<Mensagem> aux = new List<Mensagem>();
-            aux.Add(new Mensagem(1, 1, "Flávio", DateTime.Now, "Teste"));
-            ticket.ListaAcoes = aux.AsEnumerable();
-            ticket.ListaAcoes.Count();
-            CadastroTicket.GetInstancia(ticket).Show();
+            //Ticket ticket = new Ticket();
+            //ticket.NomePessoa = "Flávio";
+            //ticket.Assunto = "teste";
+            //ticket.CodigoPessoa = 1;
+            //ticket.CodigoStatus = 1;
+            //ticket.CodigoServico = 1;
+            //ticket.CodigoUrgencia = 1;
+            //ticket.CodigoResponsavel = 2;
+            //ticket.NomeResponsavel = "Matheus";
+            //ticket.PrevisaoTermico = DateTime.Now;
+            //List<Mensagem> aux = new List<Mensagem>();
+            //aux.Add(new Mensagem(1, 1, "Flávio", DateTime.Now, "Teste"));
+            //ticket.ListaAcoes = aux.AsEnumerable();
+            //ticket.ListaAcoes.Count();
+
+            try
+            {
+                string id = dataGridTicket.CurrentRow.Cells[0].Value.ToString();
+                Ticket t = TicketDAL.GetInstancia().LocarizarPorCodigo(int.Parse(id));
+                CadastroTicket.GetInstancia(t).Show();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Erro!!!\nNão foi possivel abrir este Ticket. " + ex.Message, $"Lista de Chamados");
+
+            }
+
+        }
+
+        private void dt_Inicio_ValueChanged(object sender, EventArgs e)
+        {
+            CarregarGrid();
+        }
+
+        private void dt_Final_ValueChanged(object sender, EventArgs e)
+        {
+            CarregarGrid();
+        }
+
+        private void txt_Pesquisar_KeyUp(object sender, KeyEventArgs e)
+        {
+            CarregarGrid();
         }
     }
 }

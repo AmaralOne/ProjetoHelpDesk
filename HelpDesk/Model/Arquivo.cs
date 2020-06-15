@@ -12,9 +12,10 @@ namespace Model
         public string Nome { get; set; }
         public string Formato { get; set; }
 
-        public Arquivo(int Id, int CodigoUsuario, string NomeUsuario, DateTime data, string Caminho, string Nome, string Formato)
+        public Arquivo(int Id, int IdTicket, int CodigoUsuario, string NomeUsuario, DateTime data, string Caminho, string Nome, string Formato)
         {
             this.Id = Id;
+            this.IdTicket = IdTicket;
             this.CodigoUsuario = CodigoUsuario;
             this.NomeUsuario = NomeUsuario;
             this.Data = data;

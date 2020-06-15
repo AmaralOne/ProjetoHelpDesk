@@ -24,10 +24,10 @@ namespace Model
         public string NomeUrgencia { get; set; }
 
         public int CodigoServico { get; set; }
-        public int NomeServico { get; set; }
+        public string NomeServico { get; set; }
 
         public int CodigoEquipe { get; set; }
-        public int NomeEquipe { get; set; }
+        public string NomeEquipe { get; set; }
 
         public DateTime DataInicio { get; set; }
         public DateTime PrevisaoTermico { get; set; }
