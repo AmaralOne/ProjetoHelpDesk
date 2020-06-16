@@ -138,6 +138,8 @@ namespace HelpDesk
             try
             {
                 model.Id = (int.Parse(dataGridTicket.CurrentRow.Cells[0].Value.ToString()));
+
+                model = TicketDAL.GetInstancia().LocarizarPorCodigo(model.Id);
             }
             catch (Exception)
             {

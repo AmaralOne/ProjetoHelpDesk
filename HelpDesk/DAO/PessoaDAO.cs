@@ -225,5 +225,100 @@ namespace DAO
 
             return model;
         }
+
+        public Usuario LocarizarUsuario(params object[] Keys)
+        {
+            Usuario model = null;
+            using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = $"Select P.Id, P.CPF, P.Nome, P.Email, P.Endereco, P.Telefone, P.Tipo, P.Senha, P.CodigoEquipe, E.Nome as NomeEquipe from Pessoa P inner join Equipe E on E.Id = P.CodigoEquipe Where P.Nome=@Nome;";
+
+                command.Parameters.Add("@Nome", SqlDbType.VarChar).Value = Keys[0];
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        Pessoa model;
+                        reader.Read();
+                        if (reader.GetString(6).Equals("1"))
+                        {
+                            string senha = reader.GetString(7);
+                            int idEquipe = reader.GetInt32(8);
+                            string nomeEquipe = reader.GetString(9);
+                            model = new Usuario(idEquipe, nomeEquipe, senha);
+                        }
+                        else
+                        {
+                            model = new Pessoa();
+                        }
+
+
+
+                        model.Id = reader.GetInt32(0);
+                        model.CPF = reader.GetString(1);
+                        model.Nome = reader.GetString(2);
+                        model.Email = reader.GetString(3);
+                        model.Endereco = reader.GetString(4);
+                        model.Telefone = reader.GetString(5);
+                    }
+                }
+
+            }
+
+            return model;
+        }
+
+        public IEnumerable<Usuario> TodosUsuarios()
+        {
+            List<Usuario> colecoes = new List<Usuario>();
+
+            using (SqlCommand command = Conexao.GetInstancia().Buscar().CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = $"Select P.Id, P.CPF, P.Nome, P.Email, P.Endereco, P.Telefone, P.Tipo, P.Senha, P.CodigoEquipe, E.Nome as NomeEquipe from Pessoa P inner join Equipe E on E.Id = P.CodigoEquipe;";
+
+
+
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    DataTable tabela = new DataTable();
+                    adapter.Fill(tabela);
+
+                    foreach (DataRow row in tabela.Rows)
+                    {
+                        Pessoa model;
+                        if (row["Tipo"].ToString().Equals("1"))
+                        {
+                            string senha = row["Senha"].ToString();
+                            int idEquipe = int.Parse(row["CodigoEquipe"].ToString());
+                            string nomeEquipe = row["NomeEquipe"].ToString();
+                            model = new Usuario(idEquipe, nomeEquipe, senha);
+                        }
+                        else
+                        {
+                            model = new Pessoa();
+                        }
+
+
+                        model.Id = int.Parse(row["Id"].ToString());
+                        model.Nome = row["Nome"].ToString();
+                        model.Telefone = row["Telefone"].ToString();
+                        model.CPF = row["CPF"].ToString();
+                        model.Email = row["Email"].ToString();
+                        model.Endereco = row["Endereco"].ToString();
+
+                        colecoes.Add((Usuario)model);
+                    }
+                }
+
+            }
+
+            return colecoes.AsEnumerable();
+        }
     }
 }

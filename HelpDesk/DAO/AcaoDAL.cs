@@ -64,7 +64,7 @@ namespace DAO
 
         public override void getParametrosIndex(SqlCommand command, Acoes model)
         {
-            string nada = "";
+            command.Parameters.Add("@IdTicket", SqlDbType.Int).Value = model.IdTicket;
         }
 
         public override string getTabela()

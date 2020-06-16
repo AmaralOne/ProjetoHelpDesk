@@ -215,10 +215,11 @@ namespace DAO
 
         public override bool Remover(Ticket Model)
         {
-            if (base.Remover(Model))
+            if (AcaoDAL.GetInstancia().Remover(Model.ListaAcoes.First()))
             {
-                if (AcaoDAL.GetInstancia().Remover(Model.ListaAcoes.First()))
+                if (base.Remover(Model))
                 {
+                
                     return true;
                 }
             }
