@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Ticket
+    public class Ticket:Item
     {
         
         public int Id { get; set; }
@@ -41,7 +42,26 @@ namespace Model
             
         }
 
+        public string Imprimir()
+        {
+            string retorno = $"Ticket: {this.Id}\n" +
+                $"Assunto: {this.Assunto}\n" +
+                $"Pessoa: {this.NomePessoa}\n" +
+                $"Responsável: {this.NomeResponsavel}\n" +
+                $"Status: {this.NomeStatus}\n" +
+                $"Serviço: {this.NomeServico}\n" +
+                $"Urgência: {this.NomeUrgencia}\n" +
+                $"Data de Criação: {this.DataInicio.ToString()}\n" +
+                $"Ultima Alteração: {this.DataAlteracao.ToString()}\n" +
+                $"Previsão de Solução:{this.PrevisaoTermico.ToString()}\n\n" +
+                $"Ações:\n";
+            foreach(var elemento in ListaAcoes)
+            {
+                retorno = retorno + elemento.Imprimir();
+            }
 
+            return retorno;
 
+        }
     }
 }

@@ -7,3 +7,6 @@ C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\o
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\bin\Debug\Model.dll
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\bin\Debug\Model.pdb
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\obj\Debug\DAO.csproj.CopyComplete
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\bin\Debug\PdfSharp.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\bin\Debug\PdfSharp.xml
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\DAO\bin\Debug\de\PdfSharp.resources.dll

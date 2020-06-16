@@ -44,5 +44,22 @@ namespace Model
                 throw new Exception(x.Message);
             }
         }
+
+        public static void EscreverPDF(string nome, string Texto)
+        {
+            using (var doc = new PdfSharp.Pdf.PdfDocument())
+            {
+                var page = doc.AddPage();
+                var graphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page);
+                var textFormatter = new PdfSharp.Drawing.Layout.XTextFormatter(graphics);
+                var font = new PdfSharp.Drawing.XFont("Arial", 14);
+
+                textFormatter.DrawString(Texto, font, PdfSharp.Drawing.XBrushes.Red, new PdfSharp.Drawing.XRect(50, 50, page.Width, page.Height));
+
+                doc.Save(nome);
+                System.Diagnostics.Process.Start(nome);
+
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DAO;
 using Model;
+using Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace HelpDesk
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, Observador
     {
         private static Form1 instacia = null;
         private Login login = null;
@@ -66,8 +67,8 @@ namespace HelpDesk
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dt_Inicio.Value = DateTime.Now.AddMonths(-1);
-            dt_Final.Value = DateTime.Now;
+            dt_Inicio.Value = DateTime.Today.AddMonths(-1);
+            dt_Final.Value = DateTime.Today.AddDays(1).AddMinutes(-1);
 
         }
 
@@ -164,7 +165,9 @@ namespace HelpDesk
 
         private void toolStripButton6_Click_1(object sender, EventArgs e)
         {
-            CadastroTicket.GetInstancia().Show();
+            CadastroTicket c = CadastroTicket.GetInstancia();
+            c.incluir(this);
+            c.Show();
         }
 
         private void btn_Alterar_Click(object sender, EventArgs e)
@@ -188,7 +191,9 @@ namespace HelpDesk
             {
                 string id = dataGridTicket.CurrentRow.Cells[0].Value.ToString();
                 Ticket t = TicketDAL.GetInstancia().LocarizarPorCodigo(int.Parse(id));
-                CadastroTicket.GetInstancia(t).Show();
+                CadastroTicket c = CadastroTicket.GetInstancia(t);
+                c.incluir(this);
+                c.Show();
             }
             catch (Exception ex)
             {
@@ -212,6 +217,28 @@ namespace HelpDesk
         private void txt_Pesquisar_KeyUp(object sender, KeyEventArgs e)
         {
             CarregarGrid();
+        }
+
+        public void atualizar()
+        {
+            CarregarGrid();
+        }
+
+        private void btn_Imprimir_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string id = dataGridTicket.CurrentRow.Cells[0].Value.ToString();
+                Ticket t = TicketDAL.GetInstancia().LocarizarPorCodigo(int.Parse(id));
+                Util.EscreverPDF($"Ticket{t.Id}.pdf", t.Imprimir());
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Erro!!!\nNão foi possivel imprimir este Ticket. " + ex.Message, $"Lista de Chamados");
+
+            }
         }
     }
 }

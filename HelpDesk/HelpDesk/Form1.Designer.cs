@@ -57,6 +57,7 @@
             this.DataAlteracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataPrevisao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Imprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTicket)).BeginInit();
             this.SuspendLayout();
@@ -67,6 +68,7 @@
             this.toolStripButton6,
             this.btn_Alterar,
             this.btn_Excluir,
+            this.btn_Imprimir,
             this.btn_Pessoas,
             this.toolStripButton1,
             this.toolStripButton4,
@@ -348,6 +350,17 @@
             this.CodigoPessoa.ReadOnly = true;
             this.CodigoPessoa.Visible = false;
             // 
+            // btn_Imprimir
+            // 
+            this.btn_Imprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_Imprimir.Image = ((System.Drawing.Image)(resources.GetObject("btn_Imprimir.Image")));
+            this.btn_Imprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Imprimir.Name = "btn_Imprimir";
+            this.btn_Imprimir.Size = new System.Drawing.Size(57, 19);
+            this.btn_Imprimir.Text = "Imprimir";
+            this.btn_Imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btn_Imprimir.Click += new System.EventHandler(this.btn_Imprimir_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,6 +418,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DataAlteracao;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataPrevisao;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPessoa;
+        private System.Windows.Forms.ToolStripButton btn_Imprimir;
     }
 }
 

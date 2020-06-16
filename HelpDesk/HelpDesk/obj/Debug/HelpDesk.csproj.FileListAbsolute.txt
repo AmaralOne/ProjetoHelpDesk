@@ -18,3 +18,9 @@ C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpD
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.CadastroTicket.resources
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.Login.resources
 C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\obj\Debug\HelpDesk.CadastroPessoas.resources
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\bin\Debug\PdfSharp.Charting.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\bin\Debug\PdfSharp.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\bin\Debug\PdfSharp.xml
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\bin\Debug\PdfSharp.Charting.xml
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\Amaral\Documents\Faculdade\9 periodo\tcs\ProjetoHelpDesk\HelpDesk\HelpDesk\bin\Debug\de\PdfSharp.Charting.resources.dll

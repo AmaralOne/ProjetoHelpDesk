@@ -11,10 +11,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAO;
+using Model.Interfaces;
 
 namespace HelpDesk
 {
-    public partial class CadastroTicket : Form
+    public partial class CadastroTicket : Form, Sujeito
     {
         private static CadastroTicket instancia = null;
         private Boolean novo = true;
@@ -22,6 +23,7 @@ namespace HelpDesk
         private CadastroSimplesDAO cadastoSimplesDao = null;
         private List<Acoes> itens_acoes = new List<Acoes>();
         private Ticket ticket = null;
+        private List<Observador> observadors = null;
 
 
 
@@ -29,6 +31,7 @@ namespace HelpDesk
         {
             InitializeComponent();
             this.ticket = ticket;
+            observadors = new List<Observador>();
         }
 
 
@@ -39,6 +42,8 @@ namespace HelpDesk
             {
                 instancia = new CadastroTicket(ticket);
             }
+
+
 
             
 
@@ -311,6 +316,7 @@ namespace HelpDesk
                         try
                         {
                             TicketDAL.GetInstancia().Inserir(ticket);
+                            notificarObservador();
                             //cadastoSimplesDao.Inserir(model);
                             this.Close();
                         }
@@ -327,6 +333,7 @@ namespace HelpDesk
                         {
                             //cadastoSimplesDao.Atualizar(model);
                             TicketDAL.GetInstancia().Atualizar(ticket);
+                            notificarObservador();
                             this.Close();
                         }
                         catch (Exception ex)
@@ -349,6 +356,24 @@ namespace HelpDesk
         private void comboBoxPessoas_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public void incluir(Observador o)
+        {
+            observadors.Add(o);
+        }
+
+        public void remover(Observador o)
+        {
+            observadors.Remove(o);
+        }
+
+        public void notificarObservador()
+        {
+            foreach(Observador o in observadors)
+            {
+                o.atualizar();
+            }
         }
     }
 }
