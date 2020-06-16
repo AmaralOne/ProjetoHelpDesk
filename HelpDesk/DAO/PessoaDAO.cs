@@ -241,7 +241,7 @@ namespace DAO
                 {
                     if (reader.HasRows)
                     {
-                        Pessoa model;
+                        
                         reader.Read();
                         if (reader.GetString(6).Equals("1"))
                         {
@@ -252,7 +252,7 @@ namespace DAO
                         }
                         else
                         {
-                            model = new Pessoa();
+                            model = new Usuario();
                         }
 
 

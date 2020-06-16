@@ -46,7 +46,6 @@
     <Compile Include="Arquivo.cs" />
     <Compile Include="CadastrosType.cs" />
     <Compile Include="Equipe.cs" />
-    <Compile Include="ExtendDAL.cs" />
     <Compile Include="FactoryCadastros.cs" />
     <Compile Include="ICadastro.cs" />
     <Compile Include="Mensagem.cs" />
