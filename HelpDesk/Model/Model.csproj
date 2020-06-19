@@ -50,8 +50,11 @@
   <ItemGroup>
     <Compile Include="Acoes.cs" />
     <Compile Include="AcoesEnum.cs" />
+    <Compile Include="AdapterCriptografia.cs" />
     <Compile Include="Arquivo.cs" />
     <Compile Include="CadastrosType.cs" />
+    <Compile Include="Cript.cs" />
+    <Compile Include="Criptografia.cs" />
     <Compile Include="Equipe.cs" />
     <Compile Include="FactoryCadastros.cs" />
     <Compile Include="ICadastro.cs" />

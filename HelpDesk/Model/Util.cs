@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,7 +30,8 @@ namespace Model
             }
         }
 
-        // ou se você não quiser usar a encoding como parâmetro.
+
+         // ou se você não quiser usar a encoding como parâmetro.
         public static string CalculateSHA1(string text)
         {
             try

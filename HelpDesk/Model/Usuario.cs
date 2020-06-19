@@ -41,7 +41,8 @@ namespace Model
 
         public bool Autentificacao(string Nome, string Senha)
         {
-            if (this.Nome == Nome && this.Senha == Util.CalculateSHA1(Senha))
+            Criptografia criptografia = new Criptografia();
+            if (this.Nome == Nome && this.Senha == criptografia.Criptografa(Senha))
                 return true;
             return false;
         }
@@ -50,7 +51,8 @@ namespace Model
         {
             if (this.Autentificacao(Nome, SenhaAtual))
             {
-                this.Senha = Util.CalculateSHA1(NovaSenha);
+                Cript criptografia = new AdapterCriptografia();
+                this.Senha = criptografia.Criptografa(NovaSenha);
                 return true;
             }
                 

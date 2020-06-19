@@ -164,7 +164,8 @@ namespace HelpDesk
                         ICadastro equipe1 = CadastroSimplesDAO.GetInstancia(CadastrosType.Equipe).LocarizarPorCodigo(equipe);
                         if (equipe1 != null && !senha.Equals(""))
                         {
-                            model = new Usuario(equipe1.GetId(), equipe1.GetNome(), Util.CalculateSHA1(senha));
+                            Cript criptografia = new AdapterCriptografia();
+                            model = new Usuario(equipe1.GetId(), equipe1.GetNome(), criptografia.Criptografa(senha));
                             
                         }
                         else
