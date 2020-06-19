@@ -58,7 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_Pesquisar = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTicket)).BeginInit();
             this.SuspendLayout();
@@ -74,8 +73,7 @@
             this.toolStripButton1,
             this.toolStripButton4,
             this.toolStripButton5,
-            this.toolStripButton2,
-            this.toolStripLabel1});
+            this.toolStripButton2});
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -201,6 +199,7 @@
             this.dataGridTicket.ReadOnly = true;
             this.dataGridTicket.Size = new System.Drawing.Size(776, 365);
             this.dataGridTicket.TabIndex = 6;
+            this.dataGridTicket.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridTicket_ColumnHeaderMouseClick);
             // 
             // ID
             // 
@@ -363,15 +362,6 @@
             this.label6.TabIndex = 24;
             this.label6.Text = "Pesquisar:";
             // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.AutoToolTip = true;
-            this.toolStripLabel1.DoubleClickEnabled = true;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(100, 15);
-            this.toolStripLabel1.Text = "Ordenação Por ID";
-            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,7 +420,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DataPrevisao;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPessoa;
         private System.Windows.Forms.ToolStripButton btn_Imprimir;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
     }
 }
 

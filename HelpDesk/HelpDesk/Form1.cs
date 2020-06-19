@@ -17,7 +17,8 @@ namespace HelpDesk
     {
         private static Form1 instacia = null;
         private Login login = null;
-        
+        private OrdenarTicketType type = OrdenarTicketType.Id;
+
         private Form1(Login login)
         {
             this.login = login;
@@ -72,14 +73,14 @@ namespace HelpDesk
 
         }
 
-        void CarregarGrid()
+        void CarregarGrid(OrdenarTicketType type)
         {
             List<Ticket> tickets = null;
             try
             {
                 dataGridTicket.AutoGenerateColumns = false;
                 TicketDAL ticketDAL = TicketDAL.GetInstancia();
-                ticketDAL.OrdenarPor(OrdenarTicketType.Id);
+                ticketDAL.OrdenarPor(type);
                 tickets = ticketDAL.ListarPorParametros(txt_Pesquisar.Text, dt_Inicio.Value, dt_Final.Value).ToList();
                 dataGridTicket.DataSource = null;
                 dataGridTicket.DataSource = tickets;
@@ -155,7 +156,7 @@ namespace HelpDesk
                 try
                 {
                     TicketDAL.GetInstancia().Remover(model);
-                    CarregarGrid();
+                    CarregarGrid(type);
                 }
                 catch (Exception ex)
                 {
@@ -208,22 +209,22 @@ namespace HelpDesk
 
         private void dt_Inicio_ValueChanged(object sender, EventArgs e)
         {
-            CarregarGrid();
+            CarregarGrid(type);
         }
 
         private void dt_Final_ValueChanged(object sender, EventArgs e)
         {
-            CarregarGrid();
+            CarregarGrid(type);
         }
 
         private void txt_Pesquisar_KeyUp(object sender, KeyEventArgs e)
         {
-            CarregarGrid();
+            CarregarGrid(type);
         }
 
         public void atualizar()
         {
-            CarregarGrid();
+            CarregarGrid(type);
         }
 
         private void btn_Imprimir_Click(object sender, EventArgs e)
@@ -250,6 +251,26 @@ namespace HelpDesk
             ColecaoDeTickets colecao = ticketDAL.listagemTicketsOrdenados();
             dataGridTicket.DataSource = null;
             dataGridTicket.DataSource = colecao;*/
+        }
+
+        private void dataGridTicket_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridTicket_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = dataGridTicket.Columns[e.ColumnIndex];
+            string n = newColumn.Name;
+
+            if (n.Equals("ID"))
+            {
+                type = OrdenarTicketType.Id;
+            }else if (n.Equals("Assunto"))
+            {
+                type = OrdenarTicketType.Assunto;
+            }
+            CarregarGrid(type);
         }
     }
 }
