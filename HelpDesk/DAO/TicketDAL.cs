@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace DAO
     public class TicketDAL : GenericDAO<Ticket>
     {
         private static TicketDAL instancia = null;
+        protected IOrdenar ordenar = null;
+        private OrdenarTicketType type = OrdenarTicketType.Id;
         private TicketDAL() { }
 
         public static TicketDAL GetInstancia()
@@ -20,6 +23,42 @@ namespace DAO
                 instancia = new TicketDAL();
             return instancia;
         }
+
+        public void OrdenarPor(OrdenarTicketType type)
+        {
+            this.type = type;
+            ordenar = FactoryOrdenacao.getOrdenacao(type);
+        }
+
+        public OrdenarTicketType OrdenarPor()
+        {
+            return this.type;
+        }
+
+       /* public ColecaoDeTickets listagemTicketsOrdenados()
+        {
+            ColecaoDeTickets resultado = new ColecaoDeTickets();
+
+            List<Ticket> listaDeTickets = new List<Ticket>();
+
+            SqlCommand command = ordenar.CommandOrdenar();
+
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    DataTable tabela = new DataTable();
+                    adapter.Fill(tabela);
+
+                    foreach(DataRow row in tabela.Rows)
+                {
+                    Ticket model = MontarObjeto(row);
+
+                    listaDeTickets.Add(model);
+                }
+                resultado.Add(listaDeTickets);
+                }
+            return resultado;
+            }*/
 
         public override string[] getAtributos()
         {
@@ -170,7 +209,7 @@ namespace DAO
 
         public override SqlCommand SelectComParamentro(SqlCommand command, params object[] Keys)
         {
-            command.CommandText = $"{SqlSelect()} Where T.Assunto LIKE ('%'+ @Assunto +'%') and T.DataInicio >= @DataInicio and T.DataInicio <= @DataFinal;";
+            command.CommandText = $"{SqlSelect()} Where T.Assunto LIKE ('%'+ @Assunto +'%') and T.DataInicio >= @DataInicio and T.DataInicio <= @DataFinal {ordenar.CommandOrdenar()}";
             command.Parameters.Clear();
             command.Parameters.Add("@Assunto", SqlDbType.VarChar).Value = Keys[0];
             command.Parameters.Add("@DataInicio", SqlDbType.DateTime).Value = Keys[1];

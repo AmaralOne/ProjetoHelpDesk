@@ -53,6 +53,7 @@
     <Compile Include="AdapterCriptografia.cs" />
     <Compile Include="Arquivo.cs" />
     <Compile Include="CadastrosType.cs" />
+    <Compile Include="ColecaoDeTickets.cs" />
     <Compile Include="Cript.cs" />
     <Compile Include="Criptografia.cs" />
     <Compile Include="Equipe.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Interfaces\Observador.cs" />
     <Compile Include="Interfaces\Sujeito.cs" />
     <Compile Include="Mensagem.cs" />
+    <Compile Include="OrdenarTicketType.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servico.cs" />

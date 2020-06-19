@@ -78,7 +78,9 @@ namespace HelpDesk
             try
             {
                 dataGridTicket.AutoGenerateColumns = false;
-                tickets = TicketDAL.GetInstancia().ListarPorParametros(txt_Pesquisar.Text, dt_Inicio.Value, dt_Final.Value).ToList();
+                TicketDAL ticketDAL = TicketDAL.GetInstancia();
+                ticketDAL.OrdenarPor(OrdenarTicketType.Id);
+                tickets = ticketDAL.ListarPorParametros(txt_Pesquisar.Text, dt_Inicio.Value, dt_Final.Value).ToList();
                 dataGridTicket.DataSource = null;
                 dataGridTicket.DataSource = tickets;
             }
@@ -239,6 +241,15 @@ namespace HelpDesk
                 MessageBox.Show($"Erro!!!\nNão foi possivel imprimir este Ticket. " + ex.Message, $"Lista de Chamados");
 
             }
+        }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+/*            TicketDAL ticketDAL = TicketDAL.GetInstancia();
+            ticketDAL.OrdenarPor(OrdenarTicketType.Id);
+            ColecaoDeTickets colecao = ticketDAL.listagemTicketsOrdenados();
+            dataGridTicket.DataSource = null;
+            dataGridTicket.DataSource = colecao;*/
         }
     }
 }

@@ -45,8 +45,12 @@
     <Compile Include="CadastroSimplesDAO.cs" />
     <Compile Include="Conexao.cs" />
     <Compile Include="EquipeDAO.cs" />
+    <Compile Include="FactoryOrdenacao.cs" />
     <Compile Include="GenericDAO.cs" />
     <Compile Include="IDAO.cs" />
+    <Compile Include="IOrdenar.cs" />
+    <Compile Include="OrdenarPorAssunto.cs" />
+    <Compile Include="OrdernarPorId.cs" />
     <Compile Include="PessoaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PessoaDAO.cs" />

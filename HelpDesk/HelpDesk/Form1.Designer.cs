@@ -33,18 +33,13 @@
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.btn_Alterar = new System.Windows.Forms.ToolStripButton();
             this.btn_Excluir = new System.Windows.Forms.ToolStripButton();
+            this.btn_Imprimir = new System.Windows.Forms.ToolStripButton();
             this.btn_Pessoas = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.dataGridTicket = new System.Windows.Forms.DataGridView();
-            this.dt_Final = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dt_Inicio = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_Pesquisar = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Assunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +52,13 @@
             this.DataAlteracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataPrevisao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_Imprimir = new System.Windows.Forms.ToolStripButton();
+            this.dt_Final = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dt_Inicio = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_Pesquisar = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTicket)).BeginInit();
             this.SuspendLayout();
@@ -73,7 +74,8 @@
             this.toolStripButton1,
             this.toolStripButton4,
             this.toolStripButton5,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripLabel1});
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -113,6 +115,17 @@
             this.btn_Excluir.Text = "Excluir";
             this.btn_Excluir.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.btn_Excluir.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // btn_Imprimir
+            // 
+            this.btn_Imprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_Imprimir.Image = ((System.Drawing.Image)(resources.GetObject("btn_Imprimir.Image")));
+            this.btn_Imprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Imprimir.Name = "btn_Imprimir";
+            this.btn_Imprimir.Size = new System.Drawing.Size(57, 19);
+            this.btn_Imprimir.Text = "Imprimir";
+            this.btn_Imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btn_Imprimir.Click += new System.EventHandler(this.btn_Imprimir_Click);
             // 
             // btn_Pessoas
             // 
@@ -188,79 +201,6 @@
             this.dataGridTicket.ReadOnly = true;
             this.dataGridTicket.Size = new System.Drawing.Size(776, 365);
             this.dataGridTicket.TabIndex = 6;
-            // 
-            // dt_Final
-            // 
-            this.dt_Final.CalendarForeColor = System.Drawing.SystemColors.InfoText;
-            this.dt_Final.CalendarMonthBackground = System.Drawing.SystemColors.MenuText;
-            this.dt_Final.CalendarTitleBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.dt_Final.CalendarTitleForeColor = System.Drawing.SystemColors.MenuText;
-            this.dt_Final.CalendarTrailingForeColor = System.Drawing.SystemColors.Desktop;
-            this.dt_Final.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dt_Final.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dt_Final.Location = new System.Drawing.Point(596, 416);
-            this.dt_Final.Name = "dt_Final";
-            this.dt_Final.Size = new System.Drawing.Size(178, 27);
-            this.dt_Final.TabIndex = 21;
-            this.dt_Final.ValueChanged += new System.EventHandler(this.dt_Final_ValueChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(595, 393);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(97, 20);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Data Final:";
-            // 
-            // dt_Inicio
-            // 
-            this.dt_Inicio.CalendarForeColor = System.Drawing.SystemColors.InfoText;
-            this.dt_Inicio.CalendarMonthBackground = System.Drawing.SystemColors.MenuText;
-            this.dt_Inicio.CalendarTitleBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.dt_Inicio.CalendarTitleForeColor = System.Drawing.SystemColors.MenuText;
-            this.dt_Inicio.CalendarTrailingForeColor = System.Drawing.SystemColors.Desktop;
-            this.dt_Inicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dt_Inicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dt_Inicio.Location = new System.Drawing.Point(412, 416);
-            this.dt_Inicio.Name = "dt_Inicio";
-            this.dt_Inicio.Size = new System.Drawing.Size(178, 27);
-            this.dt_Inicio.TabIndex = 23;
-            this.dt_Inicio.ValueChanged += new System.EventHandler(this.dt_Inicio_ValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(411, 393);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 20);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Data Início:";
-            // 
-            // txt_Pesquisar
-            // 
-            this.txt_Pesquisar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_Pesquisar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txt_Pesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Pesquisar.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.txt_Pesquisar.Location = new System.Drawing.Point(16, 416);
-            this.txt_Pesquisar.MinimumSize = new System.Drawing.Size(2, 28);
-            this.txt_Pesquisar.Name = "txt_Pesquisar";
-            this.txt_Pesquisar.Size = new System.Drawing.Size(362, 27);
-            this.txt_Pesquisar.TabIndex = 25;
-            this.txt_Pesquisar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_Pesquisar_KeyUp);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 393);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 20);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Pesquisar:";
             // 
             // ID
             // 
@@ -350,16 +290,87 @@
             this.CodigoPessoa.ReadOnly = true;
             this.CodigoPessoa.Visible = false;
             // 
-            // btn_Imprimir
+            // dt_Final
             // 
-            this.btn_Imprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_Imprimir.Image = ((System.Drawing.Image)(resources.GetObject("btn_Imprimir.Image")));
-            this.btn_Imprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Imprimir.Name = "btn_Imprimir";
-            this.btn_Imprimir.Size = new System.Drawing.Size(57, 19);
-            this.btn_Imprimir.Text = "Imprimir";
-            this.btn_Imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btn_Imprimir.Click += new System.EventHandler(this.btn_Imprimir_Click);
+            this.dt_Final.CalendarForeColor = System.Drawing.SystemColors.InfoText;
+            this.dt_Final.CalendarMonthBackground = System.Drawing.SystemColors.MenuText;
+            this.dt_Final.CalendarTitleBackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dt_Final.CalendarTitleForeColor = System.Drawing.SystemColors.MenuText;
+            this.dt_Final.CalendarTrailingForeColor = System.Drawing.SystemColors.Desktop;
+            this.dt_Final.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_Final.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dt_Final.Location = new System.Drawing.Point(596, 416);
+            this.dt_Final.Name = "dt_Final";
+            this.dt_Final.Size = new System.Drawing.Size(178, 27);
+            this.dt_Final.TabIndex = 21;
+            this.dt_Final.ValueChanged += new System.EventHandler(this.dt_Final_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(595, 393);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(97, 20);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Data Final:";
+            // 
+            // dt_Inicio
+            // 
+            this.dt_Inicio.CalendarForeColor = System.Drawing.SystemColors.InfoText;
+            this.dt_Inicio.CalendarMonthBackground = System.Drawing.SystemColors.MenuText;
+            this.dt_Inicio.CalendarTitleBackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dt_Inicio.CalendarTitleForeColor = System.Drawing.SystemColors.MenuText;
+            this.dt_Inicio.CalendarTrailingForeColor = System.Drawing.SystemColors.Desktop;
+            this.dt_Inicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_Inicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dt_Inicio.Location = new System.Drawing.Point(412, 416);
+            this.dt_Inicio.Name = "dt_Inicio";
+            this.dt_Inicio.Size = new System.Drawing.Size(178, 27);
+            this.dt_Inicio.TabIndex = 23;
+            this.dt_Inicio.ValueChanged += new System.EventHandler(this.dt_Inicio_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(411, 393);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 20);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Data Início:";
+            // 
+            // txt_Pesquisar
+            // 
+            this.txt_Pesquisar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_Pesquisar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txt_Pesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Pesquisar.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.txt_Pesquisar.Location = new System.Drawing.Point(16, 416);
+            this.txt_Pesquisar.MinimumSize = new System.Drawing.Size(2, 28);
+            this.txt_Pesquisar.Name = "txt_Pesquisar";
+            this.txt_Pesquisar.Size = new System.Drawing.Size(362, 27);
+            this.txt_Pesquisar.TabIndex = 25;
+            this.txt_Pesquisar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_Pesquisar_KeyUp);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 393);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(93, 20);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Pesquisar:";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.AutoToolTip = true;
+            this.toolStripLabel1.DoubleClickEnabled = true;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(100, 15);
+            this.toolStripLabel1.Text = "Ordenação Por ID";
+            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // Form1
             // 
@@ -419,6 +430,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DataPrevisao;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPessoa;
         private System.Windows.Forms.ToolStripButton btn_Imprimir;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
     }
 }
 
